@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="T1010">
+	<resultMap id="result" type="T1010">
+		<id column="F01" property="f01" jdbcType="VARCHAR" />
+		<result column="F03" property="f03" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs" type="T1010"
+		extends="result">
+		<result column="F02" property="f02" jdbcType="LONGVARCHAR" />
+		<result column="F04" property="f04" jdbcType="LONGVARCHAR" />
+	</resultMap>
+
+	<insert id="insert" parameterType="T1010">
+		insert into S10._1010 (F03, F02,F04)
+		values (#{f03,jdbcType=VARCHAR},
+		#{f02},
+		#{f04})
+	</insert>
+	<update id="update" parameterType="T1010">
+		update S10._1010
+		<set>
+			<if test="f03 != null">
+				F03 = #{f03,jdbcType=VARCHAR},
+			</if>
+			<if test="f02 != null">
+				F02 = #{f02,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="f04 != null">
+				F04 = #{f04,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where F01 = #{f01,jdbcType=VARCHAR}
+	</update>
+
+
+ <update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE S10._1010 SET ENABLE_FLAG=0 WHERE F01=#{f01} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM S10._1010 WHERE F01=#{f01} ]]>
+	</delete>
+	
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				S10._1010
+			WHERE
+				F01=#{f01}
+		]]>
+	</select>
+	
+	<select id="findSystemConfig" parameterType="java.lang.String" resultMap="result">
+		<![CDATA[
+			SELECT F01,F02,F03,F04
+			FROM 
+				S10._1010
+			WHERE
+				F01=#{f01}
+		]]>
+	</select>
+	
+	<select id="findList" parameterType="T1010"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				S10._1010			
+		]]>
+		
+			ORDER BY F01
+	</select>
+  
+</mapper>

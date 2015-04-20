@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ExperienceFund">
+	
+	<resultMap id="result" type="ExperienceFund">
+		<result property="id" column="ID"/>
+		<result property="balance" column="BALANCE"/>
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="lastUpdateTime" column="LAST_UPDATE_TIME" />
+		<result property="status" column="STATUS" />
+		<result property="startTime" column="START_TIME" />	
+		<result property="endTime" column="END_TIME"/>	
+	</resultMap>
+	
+	<resultMap id="result2" type="ExperienceFund" extends="result" >
+		<result property="userName" column="USER_NAME"/>
+		<result property="userType" column="USER_TYPE"/>
+		<result property="fundAccount" column="Fund_ACCOUNT"/>
+		<result property="fundAccountType" column="FUND_ACCOUNT_TYPE"/>	
+	</resultMap>
+		
+	<insert id="insert" parameterType="ExperienceFund">
+	    <![CDATA[
+			INSERT INTO YQD.EXPERIENCE_FUND(
+				ID,
+				BALANCE,
+				CREATE_TIME,
+				LAST_UPDATE_TIME,
+				STATUS,
+				START_TIME,
+				END_TIME
+			)VALUES(
+				#{id},
+				#{balance},
+				CURRENT_TIMESTAMP(),
+				CURRENT_TIMESTAMP(),
+				#{status},
+				#{startTime},
+				#{endTime}
+			)
+	    ]]>
+	</insert>
+	
+	<update id="update" parameterType="ExperienceFund">
+		
+			UPDATE YQD.EXPERIENCE_FUND
+			<set>
+				 
+				<if test="userId!=null" >
+					USER_ID=#{userId},
+				</if>
+				<if test="number!=null" >
+					NUMBER=#{number},
+				</if>
+				<if test="type!=null" >
+					TYPE=#{type},
+				</if>
+				<if test="balance!=null" >
+					BALANCE=#{balance},
+				</if>
+				<if test="status!=null" >
+					STATUS=#{status},
+				</if>
+				<if test="status!=null" >
+					START_TIME=#{startTime},
+				</if>
+				<if test="status!=null" >
+					END_TIME=#{endTime},
+				</if>
+				LAST_UPDATE_TIME=CURRENT_TIMESTAMP()
+			</set>
+			WHERE
+				ID=#{id}
+		
+	</update>
+	
+	<update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE YQD.EXPERIENCE_FUND SET ENABLE_FLAG=0 WHERE ID=#{id} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM YQD.EXPERIENCE_FUND WHERE ID=#{id} ]]>
+	</delete>
+	
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				YQD.EXPERIENCE_FUND
+			WHERE
+				ID=#{id}
+		]]>
+	</select>
+	
+	<select id="findList" parameterType="ExperienceFund"  resultMap="result2">
+		<![CDATA[
+			SELECT F.*
+			      ,(SELECT F02 FROM  S61.T6110 WHERE F01 = (SELECT F01 FROM  S61.T6101 WHERE F01 = F.ID)) AS USER_NAME
+				  ,(SELECT F06 FROM  S61.T6110 WHERE F01 = (SELECT F01 FROM  S61.T6101 WHERE F01 = F.ID)) AS USER_TYPE
+				  ,(SELECT F04 FROM  S61.T6101 WHERE F01 = F.ID) AS FUND_ACCOUNT
+				  ,(SELECT F03 FROM  S61.T6101 WHERE F01 = F.ID) AS FUND_ACCOUNT_TYPE
+				  
+			FROM 
+				  YQD.EXPERIENCE_FUND	F
+		]]>
+		
+			ORDER BY F.ID
+	</select>
+	<!-- 
+	<select id="selectPage" resultMap="result">
+		<![CDATA[
+			SELECT 
+				*
+			FROM 
+				EXPERIENCE_FUND			
+		]]>
+			ORDER BY ${page.sortFieldName} <if test="page.sortDesc==true">DESC</if>
+	</select>
+	 -->
+</mapper>
+
+
+

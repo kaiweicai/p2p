@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="yiqiandai">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <dependent-module archiveName="common-3.0.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/亿钱贷-common/亿钱贷-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="bid-front-service-3.0.3-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/bid-front-service/bid-front-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/yiqiandai/build/classes"/>
+        <property name="context-root" value="yiqiandai"/>
+    </wb-module>
+</project-modules>

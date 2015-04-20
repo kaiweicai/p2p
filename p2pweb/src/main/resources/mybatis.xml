@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+        <setting name="aggressiveLazyLoading" value="false"/>  
+    </settings>
+	
+	<typeAliases>
+		<!-- <typeAlias alias="ClobStringTypeHandler" type="org.apache.ibatis.type.ClobTypeHandler"/> -->
+		<!-- <typeAlias alias="BlobStringTypeHandler" type="com.vnetoo.common.typeHandler.BlobStringTypeHandler"/> -->
+		
+		<typeAlias alias="ExperienceFund" type="com.yiqiandai.p2p.experience.model.ExperienceFund"/>
+		<typeAlias alias="ExperienceBid" type="com.yiqiandai.p2p.experience.model.ExperienceBid"/>
+		<typeAlias alias="ExperienceFundDealInfo" type="com.yiqiandai.p2p.experience.model.ExperienceFundDealInfo"/>
+		<typeAlias alias="T1030" type="com.yiqiandai.p2p.base.session.model.T1030"/>
+		<typeAlias alias="T1033" type="com.yiqiandai.p2p.base.session.model.T1033"/>
+		<typeAlias alias="T1010" type="com.yiqiandai.p2p.base.config.model.T1010"/>
+	</typeAliases>
+	<!-- 
+	<typeHandlers>
+		<typeHandler javaType="java.lang.String" jdbcType="BLOB" handler="BlobStringTypeHandler" />
+		<typeHandler javaType="java.lang.String" jdbcType="CLOB" handler="ClobStringTypeHandler" />
+	</typeHandlers>
+	 
+	<plugins>
+		<plugin interceptor="com.vnetoo.common.dao.PageInterceptor">
+			<property name="pageHandler" value="com.vnetoo.common.dao.OraclePageHandler"/>
+		</plugin>
+	</plugins>
+	-->
+	<mappers>
+		<mapper resource="mapper/ExperienceFund.xml"/>
+		<mapper resource="mapper/ExperienceBid.xml"/>
+		<mapper resource="mapper/ExperienceFundDealInfo.xml"/>
+		<mapper resource="mapper/T1030.xml"/>
+		<mapper resource="mapper/T1033Mapper.xml"/>
+		<mapper resource="mapper/T1010Mapper.xml"/>
+	</mappers>
+</configuration>

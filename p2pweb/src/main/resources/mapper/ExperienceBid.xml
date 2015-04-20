@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ExperienceBid" >
+  <resultMap id="result" type="ExperienceBid" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="BORROW_ID" property="borrowId" jdbcType="INTEGER" />
+    <result column="PERIODS" property="periods" jdbcType="VARCHAR" />
+    <result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+    <result column="RATE" property="rate" jdbcType="DECIMAL" />
+    <result column="TERM" property="term" jdbcType="INTEGER" />
+    <result column="RAISE_TERM" property="raiseTerm" jdbcType="INTEGER" />
+    <result column="REPAY_WAY" property="repayWay" jdbcType="VARCHAR" />
+    <result column="GUARANTEE" property="guarantee" jdbcType="VARCHAR" />
+    <result column="GUARANTEE_WAY" property="guaranteeWay" jdbcType="VARCHAR" />
+    <result column="MORTGAGE" property="mortgage" jdbcType="VARCHAR" />
+    <result column="AUTO_LOAN" property="autoLoan" jdbcType="VARCHAR" />
+    <result column="FLOW_STANDARD" property="flowStandard" jdbcType="VARCHAR" />
+    <result column="INTEREST_WAY" property="interestWay" jdbcType="VARCHAR" />
+    <result column="INTEREST_TIME" property="interestTime" jdbcType="VARCHAR" />
+    <result column="MIN" property="min" jdbcType="DECIMAL" />
+    <result column="MAX" property="max" jdbcType="DECIMAL" />
+    <result column="TEMPLATE" property="template" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="RELEASE_TIME" property="releaseTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <insert id="insert" parameterType="ExperienceBid" >
+  		
+    insert into YQD.EXPERIENCE_BID (
+	      BORROW_ID, 
+	      PERIODS, 
+	      AMOUNT, 
+	      RATE, 
+	      TERM, 
+	      RAISE_TERM, 
+	      REPAY_WAY, 
+	      GUARANTEE, 
+	      GUARANTEE_WAY, 
+	      MORTGAGE, 
+	      AUTO_LOAN, 
+	      FLOW_STANDARD, 
+	      INTEREST_WAY, 
+	      INTEREST_TIME, 
+	      MIN, 
+	      MAX, 
+	      TEMPLATE, 
+	      DESCRIPTION, 
+	      STATE, 
+	      CREATE_TIME, 
+	      UPDATE_TIME, 
+	      RELEASE_TIME, 
+	      END_TIME
+      )
+    values (
+    	  #{borrowId,jdbcType=INTEGER}, 
+    	  #{periods,jdbcType=VARCHAR}, 
+	      #{amount,jdbcType=DECIMAL}, 
+	      #{rate,jdbcType=DECIMAL}, 
+	      #{term,jdbcType=INTEGER}, 
+	      #{raiseTerm,jdbcType=INTEGER},
+	      #{repayWay,jdbcType=VARCHAR}, 
+	      #{guarantee,jdbcType=VARCHAR}, 
+	      #{guaranteeWay,jdbcType=VARCHAR}, 
+	      #{mortgage,jdbcType=VARCHAR}, 
+	      #{autoLoan,jdbcType=VARCHAR}, 
+	      #{flowStandard,jdbcType=VARCHAR}, 
+	      #{interestWay,jdbcType=VARCHAR}, 
+	      #{interestTime,jdbcType=VARCHAR}, 
+	      #{min,jdbcType=DECIMAL}, 
+	      #{max,jdbcType=DECIMAL}, 
+	      #{template,jdbcType=VARCHAR}, 
+	      #{description,jdbcType=VARCHAR}, 
+	      #{state,jdbcType=VARCHAR}, 
+	      #{createTime,jdbcType=TIMESTAMP}, 
+	      #{updateTime,jdbcType=TIMESTAMP}, 
+	      #{releaseTime,jdbcType=TIMESTAMP}, 
+	      #{endTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  
+  <update id="update" parameterType="ExperienceBid" >
+    update YQD.EXPERIENCE_BID
+    <set >
+      <if test="borrowId != null" >
+        BORROW_ID = #{borrowId,jdbcType=INTEGER},
+      </if>
+      <if test="periods != null" >
+        PERIODS = #{periods,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="rate != null" >
+        RATE = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="term != null" >
+        TERM = #{term,jdbcType=INTEGER},
+      </if>
+      <if test="raiseTerm != null" >
+        RAISE_TERM = #{raiseTerm,jdbcType=INTEGER},
+      </if>
+      <if test="repayWay != null" >
+        REPAY_WAY = #{repayWay,jdbcType=VARCHAR},
+      </if>
+      <if test="guarantee != null" >
+        GUARANTEE = #{guarantee,jdbcType=VARCHAR},
+      </if>
+      <if test="guaranteeWay != null" >
+        GUARANTEE_WAY = #{guaranteeWay,jdbcType=VARCHAR},
+      </if>
+      <if test="mortgage != null" >
+        MORTGAGE = #{mortgage,jdbcType=VARCHAR},
+      </if>
+      <if test="autoLoan != null" >
+        AUTO_LOAN = #{autoLoan,jdbcType=VARCHAR},
+      </if>
+      <if test="flowStandard != null" >
+        FLOW_STANDARD = #{flowStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="interestWay != null" >
+        INTEREST_WAY = #{interestWay,jdbcType=VARCHAR},
+      </if>
+      <if test="interestTime != null" >
+        INTEREST_TIME = #{interestTime,jdbcType=VARCHAR},
+      </if>
+      <if test="min != null" >
+        MIN = #{min,jdbcType=DECIMAL},
+      </if>
+      <if test="max != null" >
+        MAX = #{max,jdbcType=DECIMAL},
+      </if>
+      <if test="template != null" >
+        TEMPLATE = #{template,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseTime != null" >
+        RELEASE_TIME = #{releaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE YQD.EXPERIENCE_BID SET ENABLE_FLAG=0 WHERE ID=#{id} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM YQD.EXPERIENCE_BID WHERE ID=#{id} ]]>
+	</delete>
+	
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				YQD.EXPERIENCE_BID
+			WHERE
+				ID=#{id}
+		]]>
+	</select>
+	
+	<select id="findList" parameterType="ExperienceFund"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				YQD.EXPERIENCE_BID			
+		]]>
+		
+			ORDER BY ID
+	</select>
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="T1030" >
+  <resultMap id="result" type="T1030" >
+    <result column="F01" property="f01" jdbcType="INTEGER" />
+    <result column="F02" property="f02" jdbcType="CHAR" />
+    <result column="F03" property="f03" jdbcType="TIMESTAMP" />
+    <result column="F04" property="f04" jdbcType="INTEGER" />
+    <result column="F05" property="f05" jdbcType="TIMESTAMP" />
+    <result column="F06" property="f06" jdbcType="VARCHAR" />
+    <result column="F07" property="f07" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="T1030" >
+    insert into S10._1030 (
+      
+      F02, 
+      F03, 
+      F04, 
+      F05, 
+      F06, 
+      F07
+      )
+    values (
+     
+      #{f02,jdbcType=CHAR},
+      #{f03,jdbcType=TIMESTAMP}, 
+      #{f04,jdbcType=INTEGER}, 
+      #{f05,jdbcType=TIMESTAMP}, 
+      #{f06,jdbcType=VARCHAR}, 
+      #{f07,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <update id="update" parameterType="T1030" >
+    update S10._1030
+    <set >
+      <if test="f02 != null" >
+        F02 = #{f02,jdbcType=CHAR},
+      </if>
+      <if test="f03 != null" >
+        F03 = #{f03,jdbcType=TIMESTAMP},
+      </if>
+      <if test="f04 != null" >
+        F04 = #{f04,jdbcType=INTEGER},
+      </if>
+      <if test="f05 != null" >
+        F05 = #{f05,jdbcType=TIMESTAMP},
+      </if>
+      <if test="f06 != null" >
+        F06 = #{f06,jdbcType=VARCHAR},
+      </if>
+      <if test="f07 != null" >
+        F07 = #{f07,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where F01 = #{f01,jdbcType=INTEGER}
+  </update>
+  
+  <update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE S10._1030 SET ENABLE_FLAG=0 WHERE F01=#{f01} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM S10._1030 WHERE F01=#{f01} ]]>
+	</delete>
+	
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				S10._1030
+			WHERE
+				F01=#{f01}
+		]]>
+	</select>
+	
+	<select id="findByCookieId" parameterType="java.lang.String" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM
+				S10._1030
+			WHERE
+				F02=#{f02}
+		]]>
+	</select>
+	
+	<select id="findList" parameterType="T1030"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				S10._1030	
+			ORDER BY F01		
+		]]>
+	</select>
+</mapper>

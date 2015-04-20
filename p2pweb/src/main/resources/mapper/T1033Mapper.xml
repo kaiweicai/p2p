@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="T1033" >
+  <resultMap id="result" type="T1033" >
+    <id column="F01" property="f01" jdbcType="INTEGER" />
+    <result column="F02" property="f02" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+	<insert id="insert" parameterType="T1033" >
+    insert into S10._1033 (
+      F02
+      )
+    values (
+      #{f02,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  
+  <update id="update" parameterType="T1033" >
+    update S10._1033
+    <set >
+      <if test="f02 != null" >
+        F02 = #{f02,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where F01 = #{f01,jdbcType=INTEGER}
+  </update>
+  
+  <update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE S10._1033 SET ENABLE_FLAG=0 WHERE F01=#{f01} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM S10._1033 WHERE F01=#{f01} ]]>
+	</delete>
+	
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				S10._1033
+			WHERE
+				F01=#{f01}
+		]]>
+	</select>
+	
+	<select id="findList" parameterType="T1033"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				S10._1033	
+			ORDER BY F01		
+		]]>
+	</select>
+
+</mapper>

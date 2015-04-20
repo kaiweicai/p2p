@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ExperienceFundDealInfo" >
+  <resultMap id="result" type="ExperienceFundDealInfo" >
+    <result column="ID" property="id" />
+    <result column="EXPERIENCE_GOLD_ID" property="experienceGoldId"  />
+    <result column="DEAL_TYPE_ID" property="dealTypeId"  />
+    <result column="REVENUE" property="revenue"  />
+    <result column="EXPEND" property="expend" />
+    <result column="BALANCE" property="balance" />
+    <result column="MEMO" property="memo"  />
+    <result column="CREATE_TIME" property="createTime"  />
+  </resultMap>
+  
+  <insert id="insert" parameterType="ExperienceFundDealInfo" >
+	insert into YQD.EXPERIENCE_FUND_DEAL_INFO (
+	ID, 
+	EXPERIENCE_GOLD_ID,
+	DEAL_TYPE_ID,
+	REVENUE, 
+	EXPEND, 
+	BALANCE,
+	MEMO, 
+	CREATE_TIME
+	)
+	values (
+	#{id}, 
+	#{experienceGoldId},
+	#{dealTypeId},
+	#{revenue}, 
+	#{expend}, 
+	#{balance},
+	#{memo}, 
+	#{createTime}
+	)
+  </insert>
+  
+  <update id="update" parameterType="ExperienceFundDealInfo" >
+    update YQD.EXPERIENCE_FUND_DEAL_INFO
+    <set >
+      <if test="experienceGoldId != null" >
+        EXPERIENCE_GOLD_ID = #{experienceGoldId,jdbcType=INTEGER},
+      </if>
+      <if test="dealTypeId != null" >
+        DEAL_TYPE_ID = #{dealTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="revenue != null" >
+        REVENUE = #{revenue,jdbcType=DECIMAL},
+      </if>
+      <if test="expend != null" >
+        EXPEND = #{expend,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null" >
+        BALANCE = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null" >
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE YQD.EXPERIENCE_FUND_DEAL_INFO SET ENABLE_FLAG=0 WHERE ID=#{id} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM YQD.EXPERIENCE_FUND_DEAL_INFO WHERE ID=#{id} ]]>
+	</delete>
+	
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				YQD.EXPERIENCE_FUND_DEAL_INFO
+			WHERE
+				ID=#{id}
+		]]>
+	</select>
+	
+	<select id="findList" parameterType="ExperienceFundDealInfo"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				YQD.EXPERIENCE_FUND_DEAL_INFO
+		]]>
+		
+			ORDER BY ID
+	</select>
+  
+</mapper>
