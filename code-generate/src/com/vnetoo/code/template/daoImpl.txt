@@ -1,0 +1,18 @@
+package ${package};
+
+import com.vnetoo.common.annotation.BoName;
+import com.vnetoo.common.dao.BaseDAOImpl;
+import org.springframework.stereotype.Repository;
+${import}
+
+/**
+ * @comment ${tableComment}Service实现类
+ * @author ${author}
+ * @date ${sysdate} 
+ */
+@Repository
+@BoName("${baseName}")
+public class ${baseName}DAOImpl extends BaseDAOImpl<${baseName}> implements ${baseName}DAO{
+	
+	
+}

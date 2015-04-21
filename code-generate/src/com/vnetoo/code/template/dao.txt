@@ -1,0 +1,14 @@
+package ${package};
+
+import com.vnetoo.common.dao.BaseDAO;
+${import}
+
+/**
+ * @comment ${tableComment}DAO接口
+ * @author ${author}
+ * @date ${sysdate} 
+ */
+public interface ${baseName}DAO extends BaseDAO<${baseName}>{
+	
+	
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- ${tableComment} -->
+	<bean id="${baseName.lowerFirst}DAO" class="${daoImpl}">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+
+	<bean id="${baseName.lowerFirst}Service" parent="baseTxProxyIbatis">
+		<property name="target">
+			<bean class="${serviceImpl}">
+				<property name="dao">
+					<ref local="${baseName.lowerFirst}DAO" />
+				</property>				
+			</bean>
+		</property>
+	</bean>
+	
+</beans>

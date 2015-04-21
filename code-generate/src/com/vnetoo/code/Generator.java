@@ -39,7 +39,6 @@ public class Generator {
 	
 	private JdbcTemplate jt; 
 	private String dbUserName;			//数据库用户名称
-	private String databaseName;			//表名称
 	private String tableName;			//表名称
 	private String seqName;				//SEQ名称
 	private String tableComment;		//表注释

@@ -8,9 +8,10 @@
 	</resultMap>
 		
 	<insert id="insert" parameterType="${baseName}">
-		<selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
+		<!-- <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
 	       SELECT ${seqName}.nextval from dual  
-	    </selectKey>  	    
+	    </selectKey>
+	     -->  	    
 	    <![CDATA[
 			INSERT INTO ${databaseName}.${tableName}.(${columns}
 			)VALUES(${props}

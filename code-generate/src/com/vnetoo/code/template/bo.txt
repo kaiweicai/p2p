@@ -1,0 +1,30 @@
+package ${package};
+
+import com.vnetoo.common.bo.BaseObject;
+/**
+ * @comment ${tableComment}
+ * @author ${author}
+ * @date ${sysdate}
+ */
+@SuppressWarnings("serial")
+public class ${baseName} extends Abstract${baseName} implements BaseObject{
+	/**
+	 * 批量操作ID
+	 */
+	private Integer[] ids;
+	
+	public Integer[] getIds() {
+		return ids;
+	}
+
+	public void setIds(Integer[] ids) {
+		this.ids = ids;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+${strBuff}
+		return sb.toString();
+	}
+}

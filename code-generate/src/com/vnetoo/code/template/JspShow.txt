@@ -1,0 +1,17 @@
+<#import "/WEB-INF/htm/common/tag.htm" as tag>
+<div class="input_box" style="width:800px">
+	<div class="box_title">${tableComment}信息</div>
+	<div class="box_content">
+		<table class="tb_input" >
+			<tbody>
+${tr_list}
+			</tbody>
+		</table>
+	</div>
+	<div class="box_foot">
+		<div class="box_foot_buttons">
+			<a class="bt_blue" href="javascript:void(0)" onclick="$.colorbox.close()">关闭</a>	
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,39 @@
+package ${package};
+
+import com.websale.common.view.BaseActionForm;
+${import}
+
+/**
+ * @comment ${tableComment}ActionForm
+ * @author ${author}
+ * @date ${sysdate} 
+ */
+public class ${baseName}Form extends BaseActionForm{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private ${baseName} ${baseName.lowerFirst}=new ${baseName}();
+	
+	/**
+	 * 构造函数里面设置分页器属性，不设置也行，有默认值
+	 */
+	public ${baseName}Form(){
+		//getPaginator().setTableHeight(275);
+		//getPaginator().setPageSize(10);
+		getPaginator().setSortFieldName("ID");
+		getPaginator().setSortDesc(false);
+	}
+	
+	public ${baseName} get${baseName}() {
+		return ${baseName.lowerFirst};
+	}
+	public void set${baseName}(${baseName} ${baseName.lowerFirst}) {
+		this.${baseName.lowerFirst} = ${baseName.lowerFirst};
+	}
+		
+	
+
+}

@@ -1,0 +1,26 @@
+package ${package};
+
+import javax.annotation.Resource;
+import com.vnetoo.common.service.BaseServiceImpl;
+import org.springframework.stereotype.Service;
+${import}
+
+/**
+ * @comment ${tableComment}Service实现类
+ * @author ${author}
+ * @date ${sysdate} 
+ */
+@Service 
+public class ${baseName}ServiceImpl extends BaseServiceImpl<${baseName}> implements ${baseName}Service{
+	
+	public ${baseName}DAO getDao() {
+		// TODO Auto-generated method stub
+		return (${baseName}DAO)super.dao;
+	}
+	
+	@Resource(name="${baseName.lowerFirst}DAOImpl")
+	public void setDao(${baseName}DAO dao) {
+		// TODO Auto-generated method stub
+		super.dao = dao;
+	}
+}

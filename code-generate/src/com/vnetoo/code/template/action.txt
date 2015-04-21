@@ -1,0 +1,156 @@
+package ${package};
+
+import javax.annotation.Resource;
+import com.vnetoo.common.view.BaseAction;
+import com.vnetoo.common.annotation.CheckToken;
+import org.springframework.stereotype.Controller;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
+${import}
+/**
+ * @comment ${tableComment}Action
+ * @author ${author}
+ * @date ${sysdate} 
+ */
+@SuppressWarnings("serial") 
+@Controller
+@ParentPackage("default")
+@Namespace("/")
+@Action(value="${baseName.lowerFirst}",
+results=
+{
+		@Result(name="search",	type="freemarker",location="${baseName.lowerFirst}/search.htm"),
+		@Result(name="list",	type="freemarker",location="${baseName.lowerFirst}/list.htm"),	
+		@Result(name="edit",	type="freemarker",location="${baseName.lowerFirst}/edit.htm"),
+		@Result(name="show",	type="freemarker",location="${baseName.lowerFirst}/show.htm"),
+}
+)
+public class ${baseName}Action extends BaseAction<${baseName}>{
+	@Resource
+	private ${baseName}Service ${baseName.lowerFirst}Service;
+	
+	private ${baseName} ${baseName.lowerFirst} = new ${baseName}();
+	
+	public void set${baseName}Service(${baseName}Service ${baseName.lowerFirst}Service) {
+		this.${baseName.lowerFirst}Service = ${baseName.lowerFirst}Service;
+	}
+	
+	public ${baseName}Service get${baseName}Service() {
+		return ${baseName.lowerFirst}Service;
+	}
+	
+	public void set${baseName}(${baseName} ${baseName.lowerFirst}) {
+		this.${baseName.lowerFirst} = ${baseName.lowerFirst};
+	}
+	
+	public ${baseName} get${baseName}() {
+		return ${baseName.lowerFirst};
+	}
+	
+	/**************************************************************************************/
+		
+	/**
+	 * 进入查询${tableComment}页面
+	 * /htm/${baseName.lowerFirst}/search.htm
+	 */
+	public String search() 
+	{		
+		query();
+		return RESULT_SEARCH;
+	}
+		
+	/**
+	 * 查询${tableComment}
+	 * /htm/${baseName.lowerFirst}/list.htm
+	 */
+	public String query() 
+	{				
+		${baseName.lowerFirst}Service.pageQuery(${baseName.lowerFirst},paginator);
+		return RESULT_LIST;
+	}
+	
+	/**
+	 * 进入${tableComment}修改页面
+	 * /htm/${baseName.lowerFirst}/edit.htm 
+	 */
+	public String toCreateOrUpdate()
+	{
+		if(${baseName.lowerFirst}.getId()!=null&&${baseName.lowerFirst}.getId().longValue()>0){//修改
+			${baseName.lowerFirst}=${baseName.lowerFirst}Service.findById(${baseName.lowerFirst}.getId());			
+		}
+		return RESULT_EDIT;
+	}
+	
+	/**
+	 * 进入${tableComment}查看页面
+	 * /htm/${baseName.lowerFirst}/show.htm 
+	 */
+	public String show()
+	{
+		toCreateOrUpdate();
+		return RESULT_SHOW;
+	}
+	
+	/**
+	 * 保存${tableComment}	
+	 */
+	@CheckToken
+	public String save()
+	{
+		if(${baseName.lowerFirst}.getId()!=null&&${baseName.lowerFirst}.getId().longValue()>0){
+			${baseName} po = new ${baseName}();			
+			${updateProperty}		
+			${baseName.lowerFirst}=po;
+		}
+		else{
+			//${baseName.lowerFirst}.setCreateBy(new Integer(0));
+			//${baseName.lowerFirst}.setUpdateBy(${baseName.lowerFirst}.getCreateBy());
+		}
+		try{
+			${baseName.lowerFirst}Service.saveOrUpdate(${baseName.lowerFirst});			
+		}catch(Exception e){
+			setResponseMsg(e.getMessage());
+			setResponseFlag(-1);
+		}
+		writeResponse(true);
+		return null;
+	}
+	
+	/**
+	 * 删除${tableComment}
+	 */
+	public String remove() 
+	{
+		try{
+			${baseName.lowerFirst}Service.removeLogic(${baseName.lowerFirst}.getId());			
+		}catch(Exception e){
+			setResponseFlag(-1);
+			setResponseMsg(e.getMessage());
+		}
+		writeResponse();
+		return null;
+	}
+	
+	/**
+	 * 批量删除${tableComment}
+	 */
+	public String batchRemove() 
+	{
+		try{
+			for(int i=0;i<${baseName.lowerFirst}.getIds().length;i++){
+				${baseName.lowerFirst}Service.removeLogic(${baseName.lowerFirst}.getIds()[i]);		
+			}
+		}catch(Exception e){
+			setResponseFlag(-1);
+			setResponseMsg(e.getMessage());
+		}
+		writeResponse();
+		return null;
+	}
+	/**************************************************************************************/
+}
+
+
+

@@ -1,0 +1,55 @@
+<#import "/WEB-INF/htm/common/tag.htm" as tag>
+<form id="tb_input" method="post" action="${webroot}/${baseName.lowerFirst}!save.action">
+<div class="input_box" style="width:800px">
+	<div class="box_title"><#if ${baseName.lowerFirst}.id??>修改<#else>添加</#if>${tableComment}</div>
+	<div class="box_content"><@tag.token/>
+		<input type="hidden" name="${baseName.lowerFirst}.id" id="${baseName.lowerFirst}.id" value="<#if ${baseName.lowerFirst}.id??>${${baseName.lowerFirst}.id?c!0}</#if>">
+		<table class="tb_input" >
+			<tbody>
+${tr_list}			
+			</tbody>
+		</table>
+	</div>
+	<div class="box_foot">
+		<div class="box_foot_buttons">
+			<a class="bt_green f_wait" id="input_submit" href="javascript:void(0)" onclick="submit${baseName}()">保 存</a>
+			<a class="bt_blue" href="javascript:void(0)" onclick="$.colorbox.close()">取 消</a>	
+		</div>
+	</div>
+</div>
+</form>
+
+
+<script type="text/javascript">
+$(function(){
+	$(".f_item").find("input[type='text']").change(function(){
+		if($(this).attr("class").indexOf("filedError") > -1){
+			$(this).removeClass("filedError");
+		}
+	});
+	$("#tb_input").validate({
+		rules:{
+${required_list}
+		},
+		messages:{
+${message_list}
+		}
+	});
+});
+function submit${baseName}(){
+	if (!$("#tb_input").valid()) {
+		return false;
+	}
+	
+	$.post($('#tb_input').attr("action"), $('#tb_input').formSerialize(), function(response){
+			if(response.result==0){
+				$.colorbox.close();
+				jAlert('<#if ${baseName.lowerFirst}.id??>修改<#else>添加</#if>${tableComment}成功！',function(){pageQuery()});
+			}
+			else{
+				jAlertError('<#if ${baseName.lowerFirst}.id??>修改<#else>添加</#if>${tableComment}失败！'+response.msg,function(){$("#tb_input").find("input[id='token']").val(response.token);});
+			}
+	},"json");
+	
+}
+</script>

@@ -1,0 +1,14 @@
+package ${package};
+
+import com.vnetoo.common.service.BaseService;
+${import}
+
+/**
+ * @comment ${tableComment}Service接口
+ * @author ${author}
+ * @date ${sysdate} 
+ */
+public interface ${baseName}Service extends BaseService<${baseName}>{
+
+	
+}

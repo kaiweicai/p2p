@@ -1,0 +1,11 @@
+package ${package};
+
+/**
+ * @comment ${tableComment}
+ * @author ${author}
+ * @date ${sysdate}
+ */
+@SuppressWarnings("serial")
+public abstract class Abstract${baseName} implements java.io.Serializable{${props}
+${setget}
+}
