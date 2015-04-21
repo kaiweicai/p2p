@@ -108,58 +108,6 @@
 		</dependency>			
 			
 		<dependency>
-			<groupId>com.dimeng.p2p.sz-yqd.modules</groupId>
-			<artifactId>account-front-service</artifactId>
-			<version>3.0.3-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.dimeng.p2p.sz-yqd.modules</groupId>
-			<artifactId>financial-front-service</artifactId>
-			<version>3.0.3-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.dimeng.p2p.sz-yqd.modules</groupId>
-			<artifactId>bid-front-service</artifactId>
-			<version>3.0.3-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.dimeng.p2p.sz-yqd.modules</groupId>
-			<artifactId>base-front-service</artifactId>
-			<version>3.0.3-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.dimeng.framework</groupId>
-			<artifactId>framework-config</artifactId>
-			<version>0.5.12</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dimeng.framework</groupId>
-			<artifactId>framework-http</artifactId>
-			<version>0.5.12</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dimeng.framework</groupId>
-			<artifactId>framework-service</artifactId>
-			<version>0.5.12</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dimeng.framework</groupId>
-			<artifactId>framework-resource</artifactId>
-			<version>0.5.12</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dimeng.framework</groupId>
-			<artifactId>framework-message</artifactId>
-			<version>0.5.12</version>
-			<scope>runtime</scope>
-		</dependency>
-		 
-		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
 			<version>1.1.2</version>

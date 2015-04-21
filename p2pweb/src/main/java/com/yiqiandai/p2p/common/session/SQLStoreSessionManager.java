@@ -1,9 +1,8 @@
 package com.yiqiandai.p2p.common.session;
 
-import com.dimeng.framework.resource.ResourceAnnotation;
 
-@ResourceAnnotation
-public class SQLStoreSessionManager {
+//@ResourceAnnotation
+//public class SQLStoreSessionManager {
 //	extends AbstractCookieSessionManager 
 //	public SQLStoreSessionManager(ResourceProvider resourceProvider) {
 //		super(resourceProvider);
@@ -952,4 +951,3 @@ public class SQLStoreSessionManager {
 //	}
 //}
 //}
-}

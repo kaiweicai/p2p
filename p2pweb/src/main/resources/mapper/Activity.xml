@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Activity">
+
+	<resultMap id="result" type="Activity">
+		<result property="id" column="ID" />
+		<result property="activityId" column="ACTIVITY_ID" jdbcType="VARCHAR"/>
+		<result property="name" column="NAME" jdbcType="VARCHAR"/>
+		<result property="startTime" column="START_TIME" jdbcType="TIMESTAMP"/>
+		<result property="endTime" column="END_TIME" jdbcType="TIMESTAMP"/>
+		<result property="isContinue" column="IS_CONTINUE" />
+		<result property="description" column="DESCRIPTION" jdbcType="VARCHAR"/>
+		<result property="content" column="CONTENT" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="status" column="STATUS" jdbcType="VARCHAR"/>
+		<result property="scope" column="SCOPE" jdbcType="VARCHAR"/>	
+	</resultMap>
+		
+	<insert id="insert" parameterType="Activity">
+		<!-- <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
+	       SELECT ROOT.SEQ_ACTIVITY.nextval from dual  
+	    </selectKey>
+	     -->  	    
+	    <![CDATA[
+			INSERT INTO YQD.ACTIVITY.(
+				ID,
+				ACTIVITY_ID,
+				NAME,
+				START_TIME,
+				END_TIME,
+				IS_CONTINUE,
+				DESCRIPTION,
+				CONTENT,
+				CREATE_TIME,
+				STATUS,
+				SCOPE
+			)VALUES(
+				#{id,jdbcType=NUMERIC},
+				#{activityId,jdbcType=VARCHAR},
+				#{name,jdbcType=VARCHAR},
+				#{startTime,jdbcType=TIMESTAMP},
+				#{endTime,jdbcType=TIMESTAMP},
+				0,
+				#{description,jdbcType=VARCHAR},
+				#{content,jdbcType=NUMERIC},
+				#{createTime,jdbcType=TIMESTAMP},
+				#{status,jdbcType=VARCHAR},
+				ALL
+			)
+	    ]]>
+	</insert>
+	
+	<update id="update" parameterType="Activity">		
+			UPDATE YQD.ACTIVITY
+			<set>
+				 
+				<if test="activityId!=null" >
+					ACTIVITY_ID=#{activityId,jdbcType=VARCHAR},
+				</if>
+				<if test="name!=null" >
+					NAME=#{name,jdbcType=VARCHAR},
+				</if>
+				<if test="startTime!=null" >
+					START_TIME=#{startTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="endTime!=null" >
+					END_TIME=#{endTime,jdbcType=TIMESTAMP},
+				</if>
+				<if test="isContinue!=null" >
+					IS_CONTINUE=#{isContinue,jdbcType=},
+				</if>
+				<if test="description!=null" >
+					DESCRIPTION=#{description,jdbcType=VARCHAR},
+				</if>
+				<if test="content!=null" >
+					CONTENT=#{content,jdbcType=NUMERIC},
+				</if>
+				<if test="status!=null" >
+					STATUS=#{status,jdbcType=VARCHAR},
+				</if>
+				<if test="scope!=null" >
+					SCOPE=#{scope,jdbcType=VARCHAR},
+				</if>
+			</set>
+			WHERE
+				ID=#{id}		
+	</update>
+	
+	<update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE YQD.ACTIVITY SET ENABLE_FLAG=0 WHERE ID=#{id} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM YQD.ACTIVITY WHERE ID=#{id} ]]>
+	</delete>
+	
+	<select id="selectOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 YQD.ACTIVITY
+			WHERE
+				ID=#{id}
+		]]>
+	</select>
+	
+	<select id="selectList" parameterType="Activity"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 YQD.ACTIVITY			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			
+			<if test="id!=null">
+				AND ID=#{id}
+			</if>
+			<if test="activityId!=null and activityId!='' ">
+				AND UPPER(ACTIVITY_ID) like UPPER(CONCAT(CONCAT('%', #{activityId}), '%'))
+			</if>
+			<if test="name!=null and name!='' ">
+				AND UPPER(NAME) like UPPER(CONCAT(CONCAT('%', #{name}), '%'))
+			</if>
+			<if test="startTime!=null" >
+				AND START_TIME=#{startTime}
+			</if>
+			<if test="endTime!=null" >
+				AND END_TIME=#{endTime}
+			</if>
+			<if test="isContinue!=null" >
+				AND IS_CONTINUE=#{isContinue}
+			</if>
+			<if test="description!=null and description!='' ">
+				AND UPPER(DESCRIPTION) like UPPER(CONCAT(CONCAT('%', #{description}), '%'))
+			</if>
+			<if test="content!=null">
+				AND CONTENT=#{content}
+			</if>
+			<if test="createTime!=null" >
+				AND CREATE_TIME=#{createTime}
+			</if>
+			<if test="status!=null and status!='' ">
+				AND UPPER(STATUS) like UPPER(CONCAT(CONCAT('%', #{status}), '%'))
+			</if>
+			<if test="scope!=null and scope!='' ">
+				AND UPPER(SCOPE) like UPPER(CONCAT(CONCAT('%', #{scope}), '%'))
+			</if>
+		</where>
+			ORDER BY ID
+	</select>
+	
+	<select id="selectPage" resultMap="result">
+		<![CDATA[
+			SELECT 
+				*
+			FROM 
+				 YQD.ACTIVITY			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			
+			<if test="bo.id!=null">
+				AND ID=#{bo.id}
+			</if>
+			<if test="bo.activityId!=null and bo.activityId!='' ">
+				AND UPPER(ACTIVITY_ID) like UPPER(CONCAT(CONCAT('%', #{bo.activityId}), '%'))
+			</if>
+			<if test="bo.name!=null and bo.name!='' ">
+				AND UPPER(NAME) like UPPER(CONCAT(CONCAT('%', #{bo.name}), '%'))
+			</if>
+			<if test="bo.startTime!=null" >
+				AND START_TIME=#{bo.startTime}
+			</if>
+			<if test="bo.endTime!=null" >
+				AND END_TIME=#{bo.endTime}
+			</if>
+			<if test="bo.isContinue!=null" >
+				AND IS_CONTINUE=#{bo.isContinue}
+			</if>
+			<if test="bo.description!=null and bo.description!='' ">
+				AND UPPER(DESCRIPTION) like UPPER(CONCAT(CONCAT('%', #{bo.description}), '%'))
+			</if>
+			<if test="bo.content!=null">
+				AND CONTENT=#{bo.content}
+			</if>
+			<if test="bo.createTime!=null" >
+				AND CREATE_TIME=#{bo.createTime}
+			</if>
+			<if test="bo.status!=null and bo.status!='' ">
+				AND UPPER(STATUS) like UPPER(CONCAT(CONCAT('%', #{bo.status}), '%'))
+			</if>
+			<if test="bo.scope!=null and bo.scope!='' ">
+				AND UPPER(SCOPE) like UPPER(CONCAT(CONCAT('%', #{bo.scope}), '%'))
+			</if>
+		</where>
+			ORDER BY ${page.sortFieldName} <if test="page.sortDesc==true">DESC</if>
+	</select>
+	
+</mapper>
+
+
+

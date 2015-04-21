@@ -17,6 +17,7 @@
 		<typeAlias alias="T1030" type="com.yiqiandai.p2p.base.session.model.T1030"/>
 		<typeAlias alias="T1033" type="com.yiqiandai.p2p.base.session.model.T1033"/>
 		<typeAlias alias="T1010" type="com.yiqiandai.p2p.base.config.model.T1010"/>
+		<typeAlias alias="Activity" type="com.yiqiandai.p2p.activity.bo.Activity"/>
 	</typeAliases>
 	<!-- 
 	<typeHandlers>
@@ -37,5 +38,6 @@
 		<mapper resource="mapper/T1030.xml"/>
 		<mapper resource="mapper/T1033Mapper.xml"/>
 		<mapper resource="mapper/T1010Mapper.xml"/>
+		<mapper resource="mapper/Activity.xml"/>
 	</mappers>
 </configuration>
