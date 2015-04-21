@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="generater" default="default" basedir=".">
+	<property file="build.properties" /> 
+	
+	<!--数据库名-->
+		<property name="jdbc.driver" value="com.mysql.jdbc.Driver"/>
+	<!--数据库名-->
+		<property name="jdbc.url" value="jdbc:mysql://192.168.8.88:3306/YQD"/>
+	<!--数据库名-->
+		<property name="jdbc.username" value="root"/>
+	<!--数据库名-->
+		<property name="jdbc.password" value="hDx6N7tk9T"/>			
+		
+	<!--创建文件的基础路径-->
+		<property name="projectPath" value="E:\workspace\yqd-base"/>
+	<!--源文件路径-->
+		<property name="srcProjectPath" value="E:\code\code-generate\code-generate"/>
+	<!--代码路径-->
+		<property name="srcPath" value="${projectPath}\src\main\java"/>
+	<!--创建文件的基础路径-->
+		<property name="cfgPath" value="${projectPath}\src\main\resources"/>
+	<!--源文件路径-->
+		<property name="jspPath" value="${projectPath}\src\main\webapp\WEB-INF\htm"/>
+	<!--包路径-->
+		<property name="FILEPATH_BO" value="bo"/>
+		<property name="FILEPATH_DAO" value="dao"/>	
+		<property name="FILEPATH_SERVICE" value="service"/>	
+		<property name="FILEPATH_VIEW" value="view"/>
+	
+	<!--数据库名-->
+		<property name="dbName" value="YQD"/>	
+	<!--表名-->
+		<property name="tableName" value="${tableName}"/>			
+	<!--包路径-->
+		<property name="packagePath" value="${packagePath}"/>
+	<!--是否覆盖-->
+		<property name="overWrite" value="${overWrite}"/>
+	
+	<!--生成代码-->
+		<property name="generator.AbstractBO" value="false"/>
+		<property name="generator.BO" value="false"/>
+		<property name="generator.BOMapper" value="false"/>
+		<property name="generator.Dao" value="false"/>
+		<property name="generator.DaoImpl" value="false"/>
+		<property name="generator.Service" value="false"/>
+		<property name="generator.ServiceImpl" value="false"/>
+		<property name="generator.Action" value="false"/>
+		<property name="generator.JSP" value="false"/>
+	
+	<target name="default">
+		<echo>genarate code...</echo>
+		<antcall target="AbstractBO"/>
+		<antcall target="BO"/>	
+		<antcall target="BOMapper"/>
+		<antcall target="Dao"/>
+		<antcall target="DaoImpl"/>
+		<antcall target="Service"/>
+		<antcall target="ServiceImpl"/>
+		<antcall target="Action"/>
+		<antcall target="JSP"/>
+		<echo>genarate done.</echo>
+	</target>
+	<target name="AbstractBO">		
+		<antcall target="generator">
+		    <param name="generator.AbstractBO" value="true"/>
+		</antcall>
+	</target>
+	<target name="BO">
+		<antcall target="generator">
+		    <param name="generator.BO" value="true"/>
+		</antcall>
+	</target>
+	<target name="BOMapper">
+		<antcall target="generator">
+		    <param name="generator.BOMapper" value="true"/>
+		</antcall>
+	</target>
+	<target name="Dao">
+		<antcall target="generator">
+		    <param name="generator.Dao" value="true"/>
+		</antcall>
+	</target>
+	<target name="DaoImpl">
+		<antcall target="generator">
+		    <param name="generator.DaoImpl" value="true"/>
+		</antcall>
+	</target>
+	<target name="Service">
+		<antcall target="generator">
+		    <param name="generator.Service" value="true"/>
+		</antcall>
+	</target>
+	<target name="ServiceImpl">
+		<antcall target="generator">
+		    <param name="generator.ServiceImpl" value="true"/>
+		</antcall>
+	</target>
+	<target name="Action">
+		<antcall target="generator">
+		    <param name="generator.Action" value="true"/>
+		</antcall>
+	</target>
+	<target name="JSP">
+		<antcall target="generator">
+		    <param name="generator.JSP" value="true"/>
+		</antcall>
+	</target>
+		
+	<target name="generator">
+		<java classname="com.vnetoo.code.Generator" fork="true">
+			<sysproperty key="DEBUG" value="true"/>
+			<arg value="${jdbc.driver}"/>
+			<arg value="${jdbc.url}"/>
+			<arg value="${jdbc.username}"/>
+			<arg value="${jdbc.password}"/>
+			
+			<arg value="${dbName}"/>
+			<arg value="${tableName}"/>
+			<arg value="${packagePath}"/>
+			<arg value="${overWrite}"/>
+			
+			<arg value="${FILEPATH_BO}"/>
+			<arg value="${FILEPATH_DAO}"/>	
+			<arg value="${FILEPATH_SERVICE}"/>	
+			<arg value="${FILEPATH_VIEW}"/>
+			
+			<arg value="${projectPath}"/>
+			<arg value="${srcProjectPath}"/>	
+			<arg value="${srcPath}"/>	
+			<arg value="${cfgPath}"/>
+			<arg value="${jspPath}"/>
+			
+			<arg value="${generator.AbstractBO}"/>
+			<arg value="${generator.BO}"/>
+			<arg value="${generator.BOMapper}"/>
+			<arg value="${generator.Dao}"/>
+			<arg value="${generator.DaoImpl}"/>
+			<arg value="${generator.Service}"/>
+			<arg value="${generator.ServiceImpl}"/>
+			<arg value="${generator.Action}"/>
+			<arg value="${generator.JSP}"/>			
+				
+			<classpath>
+				<pathelement path="${srcProjectPath}\target\classes"/>
+				<pathelement path="${srcProjectPath}\lib"/>
+				<path location="${srcProjectPath}\lib\spring-jdbc-3.2.3.RELEASE.jar"></path>
+				<path location="${srcProjectPath}\lib\commons-dbcp-1.4.jar"></path>
+				<path location="${srcProjectPath}\lib\commons-pool-1.5.4.jar"></path>
+				<path location="${srcProjectPath}\lib\spring-beans-3.2.3.RELEASE.jar"></path>
+				<path location="${srcProjectPath}\lib\spring-core-3.2.3.RELEASE.jar"></path>
+				<path location="${srcProjectPath}\lib\spring-tx-3.2.3.RELEASE.jar"></path>
+				<path location="${srcProjectPath}\lib\commons-logging-1.1.1.jar"></path>
+				<path location="${srcProjectPath}\lib\aopalliance-1.0.jar"></path>
+				<path location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.25\mysql-connector-java-5.1.25.jar"></path>
+			</classpath>			
+		</java>
+	</target>
+	
+	
+
+</project>

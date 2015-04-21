@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="${baseName}">
+
+	<resultMap id="result" type="${baseName}">${orm}	
+	</resultMap>
+		
+	<insert id="insert" parameterType="${baseName}">
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
+	       SELECT ${seqName}.nextval from dual  
+	    </selectKey>  	    
+	    <![CDATA[
+			INSERT INTO ${databaseName}.${tableName}.(${columns}
+			)VALUES(${props}
+			)
+	    ]]>
+	</insert>
+	
+	<update id="update" parameterType="${baseName}">		
+			UPDATE ${databaseName}.${tableName}
+			<set>
+				 ${resetVal}
+			</set>
+			WHERE
+				${pkFilter}		
+	</update>
+	
+	<update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE ${databaseName}.${tableName} SET ENABLE_FLAG=0 WHERE ${pkFilter} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM ${databaseName}.${tableName} WHERE ${pkFilter} ]]>
+	</delete>
+	
+	<select id="selectOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 ${databaseName}.${tableName}
+			WHERE
+				${pkFilter}
+		]]>
+	</select>
+	
+	<select id="selectList" parameterType="${baseName}"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 ${databaseName}.${tableName}			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			${where}		</where>
+			ORDER BY ${pkName}
+	</select>
+	
+	<select id="selectPage" resultMap="result">
+		<![CDATA[
+			SELECT 
+				*
+			FROM 
+				 ${databaseName}.${tableName}			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			${where.bo}		</where>
+			ORDER BY ${page.sortFieldName} <if test="page.sortDesc==true">DESC</if>
+	</select>
+	
+</mapper>
+
+
+
