@@ -964,7 +964,7 @@ public class Generator {
 	public static void main(String[] args)throws Exception {
 				
 		//数据库配置
-		BasicDataSource ds=new BasicDataSource();		
+		BasicDataSource ds=new BasicDataSource();
 		ds.setDriverClassName(args[0]);
 		ds.setUrl(args[1]);
 		ds.setUsername(args[2]);

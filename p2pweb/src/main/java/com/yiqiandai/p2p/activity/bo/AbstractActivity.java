@@ -1,5 +1,7 @@
 package com.yiqiandai.p2p.activity.bo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @comment 活动记录表
  * @author Administrator
@@ -22,6 +24,7 @@ public abstract class AbstractActivity implements java.io.Serializable{
 	/**
 	 * @alias 活动开始时间
 	 */
+	@DateTimeFormat(pattern="yyyy/MM/dd hh:mm")
 	protected java.util.Date startTime;
 	/**
 	 * @alias 活动结束时间

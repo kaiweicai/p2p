@@ -35,6 +35,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler) throws Exception {
 		boolean flag = false;
         String url = request.getRequestURL().toString();
+        
         logger.info("拦截的url为"+url);
         for (String s : IGNORE_URI) {
             if (url.contains(s)) {
@@ -46,7 +47,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 //            T_supplier_user user = LoginController.getLoginUser(request);
 //            if (user != null) flag = true;
         }
-        return flag;
+        return true;
 	}
 
 	// 在业务处理器处理请求执行完成后,生成视图之前执行的动作
@@ -55,7 +56,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
-		logger.info("==============执行顺序: 2、postHandle================");
+//		logger.info("==============执行顺序: 2、postHandle================");
 	}
 
 	/**
@@ -67,8 +68,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public void afterCompletion(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// TODO Auto-generated method stub
-		logger.info("==============执行顺序: 3、afterCompletion================");
+//		logger.info("==============执行顺序: 3、afterCompletion================");
 	}
 
 }

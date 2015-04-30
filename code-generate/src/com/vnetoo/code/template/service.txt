@@ -1,6 +1,6 @@
 package ${package};
 
-import com.vnetoo.common.service.BaseService;
+import com.yiqiandai.p2p.base.service.BaseService;
 ${import}
 
 /**

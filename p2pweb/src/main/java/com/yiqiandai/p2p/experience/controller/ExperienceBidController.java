@@ -23,6 +23,6 @@ public class ExperienceBidController {
 	public String login(Model model, HttpServletRequest request, HttpSession session) {
 		ExperienceBid bid = experienceBidService.findById(1);
 		model.addAttribute("bid", bid);
-		return "/experience/example";
+		return "/activity/activityView";
 	}
 }

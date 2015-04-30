@@ -13,9 +13,9 @@
 		<property name="jdbc.password" value="hDx6N7tk9T"/>			
 		
 	<!--创建文件的基础路径-->
-		<property name="projectPath" value="E:\workspace\yqd-base"/>
+		<property name="projectPath" value="D:\gitRespons\p2pweb"/>
 	<!--源文件路径-->
-		<property name="srcProjectPath" value="E:\code\code-generate\code-generate"/>
+		<property name="srcProjectPath" value="D:\gitRespons\code-generate"/>
 	<!--代码路径-->
 		<property name="srcPath" value="${projectPath}\src\main\java"/>
 	<!--创建文件的基础路径-->
@@ -152,7 +152,7 @@
 				<path location="${srcProjectPath}\lib\spring-tx-3.2.3.RELEASE.jar"></path>
 				<path location="${srcProjectPath}\lib\commons-logging-1.1.1.jar"></path>
 				<path location="${srcProjectPath}\lib\aopalliance-1.0.jar"></path>
-				<path location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.25\mysql-connector-java-5.1.25.jar"></path>
+				<path location="${srcProjectPath}\lib\mysql-connector-java-5.1.25.jar"></path>
 			</classpath>			
 		</java>
 	</target>

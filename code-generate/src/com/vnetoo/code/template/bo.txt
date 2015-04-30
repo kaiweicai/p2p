@@ -1,6 +1,6 @@
 package ${package};
 
-import com.vnetoo.common.bo.BaseObject;
+import com.yiqiandai.p2p.base.model.BaseObject;
 /**
  * @comment ${tableComment}
  * @author ${author}

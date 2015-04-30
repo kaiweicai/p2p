@@ -1,7 +1,7 @@
 package ${package};
 
-import com.vnetoo.common.annotation.BoName;
-import com.vnetoo.common.dao.BaseDAOImpl;
+import com.yiqiandai.p2p.common.annotation.BoName;
+import com.yiqiandai.p2p.base.dao.BaseDAOImpl;
 import org.springframework.stereotype.Repository;
 ${import}
 
