@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yiqiandai.p2p.base.session.controller.LoginController;
-
 public class AuthInterceptor implements HandlerInterceptor {
 	private static final String[] IGNORE_URI = {"/login.html", "/login.dhtml"};
 	private Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
