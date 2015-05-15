@@ -2,43 +2,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>用户登录</title>
-<%@include file="/WEB-INF/include/loginHeader.jsp"%>
+<%@include file="/WEB-INF/jsp/user/loginHeader.jsp"%>
 </head>
 <body>
-	<form action="<%=controller.getURI(request, Login.class)%>" method="post" onsubmit="return onSubmit();">
+	<form action="/user/login.dhtml" method="post" onsubmit="return onSubmit();">
 	<div class="main_box">
     	<div class="login_bg">
-    		<img src="<%=controller.getStaticPath(request)%>/images/login/loginbg.jpg" width="527" height="440" />
+    		<img src="/images/login/loginbg.jpg" width="527" height="440" />
     	</div>
         <div class="login_box">
         	<div class="login_tit pt30 pb20">
             	<span class="fl f18">欢迎来到亿钱贷</span>
-                <span class="fr pt5">没有账号？<a href="<%configureProvider.format(out, URLVariable.REGISTER);%>" class="blue">免费注册</a></span>
+                <span class="fr pt5">没有账号？<a href='<pp:SystemConstantTag con="com.yiqiandai.p2p.common.constant.URLVariable.REGISTER"/>' class="blue">免费注册</a></span>
                 <div class="clear"></div>
             </div>
-            	<input type="hidden" name="_z" value="<%StringHelper.filterHTML(out, returnUrl);%>" />
-            	<%{String errorMessage = controller.getPrompt(request,response,PromptLevel.ERROR);
-				if (!StringHelper.isEmpty(errorMessage)) {%>
-					<div class="newerro_tip">
-						<%StringHelper.filterHTML(out, errorMessage);%>
-					</div>
-				<%}
-				}%>
+            	<input type="hidden" name="from"/>
+				<div class="newerro_tip">
+				</div>
 				<div class="login_tx">
-					<input id="accountName"  name="accountName" maxlength="18" type="text" class="logininput w340" value="<%StringHelper.filterHTML(out, _accountName);%>"
+					<input id="accountName"  name="accountName" value="${usermodel.accountName}" maxlength="18" type="text" class="logininput w340"
 						 placeholder="用户名/手机" />
 				</div>
 				<div id="login_tips" class="login_tips gray"></div>
 				<div class="login_tx">
-					<input maxlength="20" name="password" type="password" class="logininput w340"	id="password" placeholder="密码" />
+					<input maxlength="20" name="password" type="password" value="${usermodel.password}" class="logininput w340" id="password" placeholder="密码" />
 				</div>
-				<div id="password_tips" class="login_tips"></div>
+				<div id="login_tips" class="login_tips"></div>
 				<div class="login_tx">
 					<span class="fl mr10">
-						<input id="verifyCode" name="verifyCode" maxlength="<%=systemDefine.getVerifyCodeLength() %>" type="text"	class="logininput w180" id="textfield" maxlength="6" placeholder="验证码" />
+						<input id="verifyCode" name="verifyCode" value="${usermodel.verifyCode }" type="text" class="logininput w180" id="textfield" maxlength="6" placeholder="验证码" />
 					</span>
 					<div class="rf">
-						<img width="133px" height="53px" alt="验证码" id="_verifyImg" src="<%=controller.getURI(request, LoginVerify.class)%>" alt="验证码" title="点击刷新" onclick="this.src='<%=controller.getURI(request, LoginVerify.class)%>?'+Math.random()" style="cursor: pointer;" />
+						<img width="133px" height="53px" alt="验证码" id="_verifyImg" alt="验证码" title="点击刷新" style="cursor: pointer;" />
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -46,10 +41,10 @@
 				
 				<div class="login_name">
 					<span class="fl mr10 pt5">
-						<input type="checkbox" name="remember" id="remember" <%=remObject == null ? "": "checked=\"checked\""%>/>
+						<input type="checkbox" name="remember" id="remember"/>
 					</span>
 					<span class="fl">记住用户名</span>
-					<span class="fr"><a href="<%configureProvider.format(out,URLVariable.GET_PASSWORD);%>" class="blue">忘记密码？</a></span>
+					<span class="fr"><a href='<pp:SystemConstantTag con="com.yiqiandai.p2p.common.constant.URLVariable.GET_PASSWORD"/>' class="blue">忘记密码？</a></span>
 					<div class="clear"></div>
 				</div>
 				<div class="loginlj">
@@ -60,11 +55,10 @@
 </div>
 </form>
 <div style="height: 150px"></div>
-	<%@include file="/WEB-INF/include/loginFooter.jsp"%>
-	<%@include file="/WEB-INF/include/script.jsp"%>
 	<script type="text/javascript">
 	var isNull = /^[\s]{0,}$/;
-	var verify = /^\d{<%=systemDefine.getVerifyCodeLength() %>}$/;
+	//var verify = /^\d4$/;
+	var verify = /^\d$/;
 	var loginName = /^[a-z]([\w]*)$/i;
 
 	$("#accountName").blur(accountCheck);

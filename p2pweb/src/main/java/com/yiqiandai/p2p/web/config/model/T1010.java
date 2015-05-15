@@ -3,7 +3,7 @@ package com.yiqiandai.p2p.web.config.model;
 import com.yiqiandai.p2p.base.model.BaseObject;
 
 /**
- * session实体类
+ * 系统配置实体类
  * @author zhongl
  *
  */

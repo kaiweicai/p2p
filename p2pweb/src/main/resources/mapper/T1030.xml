@@ -12,7 +12,6 @@
   </resultMap>
   <insert id="insert" parameterType="T1030" >
     insert into S10._1030 (
-      
       F02, 
       F03, 
       F04, 

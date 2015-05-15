@@ -16,7 +16,7 @@
         <!-- 定义标签体为空 -->
         <body-content>empty</body-content>
         <attribute>
-	        <name>systemConstant</name>
+	        <name>con</name>
 	        <required>false</required>
 	        <rtexprvalue>true</rtexprvalue>
     	</attribute>

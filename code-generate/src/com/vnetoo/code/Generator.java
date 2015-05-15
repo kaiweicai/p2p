@@ -244,7 +244,7 @@ public class Generator {
 	
 	private void query()throws Exception{
 		//String sql="select comments from user_tab_comments where upper(TABLE_NAME)=upper('"+this.tableName+"')";
-		String sql="SELECT TABLE_COMMENT FROM information_schema.TABLES WHERE TABLE_NAME = upper('"+this.tableName+"')";
+		String sql="SELECT TABLE_COMMENT FROM information_schema.TABLES WHERE TABLE_NAME = upper('"+this.tableName+"') AND TABLE_SCHEMA=UPPER('"+this.dbName+"')";
 		this.tableComment=(String)jt.queryForObject(sql,new Object[]{}, String.class);
 		if(tableComment==null)
 			tableComment="";
@@ -252,7 +252,7 @@ public class Generator {
 //		sql="select column_name from user_cons_columns where constraint_name="+
 //			"(select    constraint_name   from    user_constraints "+   
 //            "where    table_name   =    upper('"+this.tableName+"')  and    constraint_type   ='P')";
-		sql="SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME='"+this.tableName+"' AND COLUMN_KEY = 'PRI'";
+		sql="SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME='"+this.tableName+"' AND TABLE_SCHEMA=UPPER('"+this.dbName+"') AND COLUMN_KEY = 'PRI'";
 		
 		
 		this.pkName=(String)jt.queryForObject(sql, String.class);
@@ -265,7 +265,7 @@ public class Generator {
 //			"from user_col_comments a ,ALL_TAB_COLUMNS b "+
 //			"where upper(a.TABLE_NAME)=upper('"+this.tableName+"')  and upper(b.OWNER)=upper('"+dbUserName+"')"+
 //			"and upper(b.TABLE_NAME)=upper(a.TABLE_NAME) and upper(b.column_name)=upper(a.column_name)";
-		sql="SELECT COLUMN_NAME as column_name,COLUMN_COMMENT AS comments,DATA_TYPE AS type,COLUMN_DEFAULT AS defval,IS_NULLABLE AS NULLABLE  FROM information_schema.COLUMNS WHERE TABLE_NAME='"+this.tableName+"'";
+		sql="SELECT COLUMN_NAME as column_name,COLUMN_COMMENT AS comments,DATA_TYPE AS type,COLUMN_DEFAULT AS defval,IS_NULLABLE AS NULLABLE  FROM information_schema.COLUMNS WHERE TABLE_NAME='"+this.tableName+"' AND TABLE_SCHEMA=UPPER('"+this.dbName+"')";
 		columnList=jt.query(sql, new org.springframework.jdbc.core.RowMapper<ColumnInfo>(){
 			public ColumnInfo mapRow(java.sql.ResultSet rs, int i) throws java.sql.SQLException{
 				ColumnInfo ti=new ColumnInfo();

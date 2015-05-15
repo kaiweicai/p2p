@@ -16,6 +16,7 @@
 		<typeAlias alias="ExperienceFundDealInfo" type="com.yiqiandai.p2p.web.experience.model.ExperienceFundDealInfo"/>
 		<typeAlias alias="Activity" type="com.yiqiandai.p2p.web.activity.bo.Activity"/>
 		<typeAlias alias="UserSession1030" type="com.yiqiandai.p2p.web.session.bo.UserSession1030"/>
+		<typeAlias alias="T1010" type="com.yiqiandai.p2p.web.config.model.T1010"/>
 	</typeAliases>
 	<!-- 
 	<typeHandlers>
@@ -35,5 +36,6 @@
 		<mapper resource="mapper/ExperienceFundDealInfo.xml"/>
 		<mapper resource="mapper/Activity.xml"/>
 		<mapper resource="mapper/UserSession1030.xml"/>
+		<mapper resource="mapper/T1010Mapper.xml"/>
 	</mappers>
 </configuration>
