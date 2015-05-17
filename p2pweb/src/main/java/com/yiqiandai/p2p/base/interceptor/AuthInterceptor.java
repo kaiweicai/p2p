@@ -13,7 +13,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 	private Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
 
 	public AuthInterceptor() {
-		// TODO Auto-generated constructor stub
 	}
 
 	private String mappingURL;// 利用正则映射到需要拦截的路径

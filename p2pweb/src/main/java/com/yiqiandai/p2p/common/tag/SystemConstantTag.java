@@ -32,24 +32,25 @@ public class SystemConstantTag extends SimpleTagSupport {
 		try {
 			super.doTag();
 			int posofLastPoint = con.lastIndexOf('.');
+			String parameter = "";
 			String clazzName = con.substring(0,posofLastPoint);
 			String fieldName = con.substring(posofLastPoint+1);
-			Class SystemConstantClazz = Class.forName(clazzName);
-			Field filed = SystemConstantClazz.getDeclaredField(fieldName);
-			ServletContext servletContext = ((PageContext)this.getJspContext()).getServletContext();
-			WebApplicationContext webAppContext = WebApplicationContextUtils.getWebApplicationContext(servletContext, "org.springframework.web.servlet.FrameworkServlet.CONTEXT.p2p");
-			configService = webAppContext.getBean("t1010ServiceImpl", T1010Service.class);
-			VariableBean variableBean = (VariableBean)filed.get(SystemConstantClazz);
-			T1010 config = configService.findSystemConfig(variableBean.getKey());
-			String parameter = config.getF02();
-			Pattern p = Pattern.compile("\\$\\{\\s*(\\w|\\.|-|_|\\$)+\\s*\\}", 2);
-			Matcher m = p.matcher(parameter);
-			while(m.find()){
-				String sys = m.group();
-				String s = sys.substring(2, sys.length()-1);
-				String sysparameter = configService.findSystemConfig(s).getF02();
-				parameter = parameter.replace(sys, sysparameter);
-			}
+//			Class SystemConstantClazz = Class.forName(clazzName);
+//			Field filed = SystemConstantClazz.getDeclaredField(fieldName);
+//			ServletContext servletContext = ((PageContext)this.getJspContext()).getServletContext();
+//			WebApplicationContext webAppContext = WebApplicationContextUtils.getWebApplicationContext(servletContext, "org.springframework.web.servlet.FrameworkServlet.CONTEXT.p2p");
+//			configService = webAppContext.getBean("t1010ServiceImpl", T1010Service.class);
+//			VariableBean variableBean = (VariableBean)filed.get(SystemConstantClazz);
+//			T1010 config = configService.findSystemConfig(variableBean.getKey());
+//			parameter = config.getF02();
+//			Pattern p = Pattern.compile("\\$\\{\\s*(\\w|\\.|-|_|\\$)+\\s*\\}", 2);
+//			Matcher m = p.matcher(parameter);
+//			while(m.find()){
+//				String sys = m.group();
+//				String s = sys.substring(2, sys.length()-1);
+//				String sysparameter = configService.findSystemConfig(s).getF02();
+//				parameter = parameter.replace(sys, sysparameter);
+//			}
 			getJspContext().getOut().write(parameter);
 		} catch (Exception e) {
 			logger.error("标签查询系统常量错误！",e);

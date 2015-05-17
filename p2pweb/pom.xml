@@ -31,7 +31,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
+	<!-- <repositories>
 		<repository>
 			<id>p2p-snapshots</id>
 			<url>http://192.168.1.109:8081/nexus/content/repositories/p2p-snapshots/</url>
@@ -64,6 +64,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	 -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -96,11 +97,13 @@
 			<version>2.3.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>com.google.code</groupId>
 			<artifactId>kaptcha</artifactId>
 			<version>2.3.2</version>
 		</dependency>
+		 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
