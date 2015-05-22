@@ -10,4 +10,6 @@ import com.yiqiandai.p2p.web.session.bo.UserSession1030;
  */
 public interface UserSession1030Service extends BaseService<UserSession1030>{
 	public void updateRegister(int accountId);
+
+	public void getSession(String cookieKey);
 }
