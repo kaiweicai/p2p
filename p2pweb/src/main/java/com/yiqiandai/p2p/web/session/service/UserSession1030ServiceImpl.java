@@ -12,11 +12,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.dimeng.framework.http.session.Session;
 import com.dimeng.p2p.session.LoginSessionManager;
 import com.yiqiandai.p2p.base.service.BaseServiceImpl;
+import com.yiqiandai.p2p.web.session.SessionConstant;
 import com.yiqiandai.p2p.web.session.bo.UserSession1030;
 import com.yiqiandai.p2p.web.session.dao.UserSession1030DAO;
 
@@ -50,29 +52,18 @@ public class UserSession1030ServiceImpl extends BaseServiceImpl<UserSession1030>
 
 	@Override
 	public void getSession(String cookieKey) {
-		String tokenName = getTokenName();
-		Cookie token = null;
-		Cookie[] cookies = request.getCookies();
-		if ((cookies != null) && (cookies.length > 0)) {
-			for (Cookie cookie : cookies) {
-				if (!(tokenName.equals(cookie.getName())))
-					continue;
-				token = cookie;
-				break;
-			}
+		String tokenName = SessionConstant.COOKIE_KEY;
+		if (StringUtils.isBlank(cookieKey)) {
+			cookieKey = newToken();
 		}
+		Cookie token = new Cookie(tokenName, cookieKey);
 
-		if (token == null) {
-			if (!(create)) {
-				return null;
-			}
-			token = new Cookie(tokenName, newToken());
-			token.setHttpOnly(true);
-			token.setSecure(false);
-			token.setMaxAge(-1);
-			token.setPath("/");
-			response.addCookie(token);
-		}
+//		token = new Cookie(tokenName, newToken());
+//		token.setHttpOnly(true);
+//		token.setSecure(false);
+//		token.setMaxAge(-1);
+//		token.setPath("/");
+//		response.addCookie(token);
 
 		Session session = newSession(token, request, response);
 		return session;
