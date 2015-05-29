@@ -5,6 +5,8 @@ package com.yiqiandai.p2p.base.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yiqiandai.p2p.base.dao.BaseDAO;
@@ -16,7 +18,7 @@ import com.yiqiandai.p2p.base.model.BaseObject;
  * @date 2013年8月13日
  */
 public class BaseServiceImpl<T extends BaseObject> implements BaseService<T>{
-	
+	protected Logger logger = LoggerFactory.getLogger(getClass());
 	protected BaseDAO<T> dao;
 	
 	public BaseDAO<T> getDao() {

@@ -11,5 +11,7 @@ import com.yiqiandai.p2p.web.session.bo.UserSession1030;
 public interface UserSession1030DAO extends BaseDAO<UserSession1030>{
 
 	UserSession1030 findByUserId(int userId);
-	
+
+	UserSession1030 findByUserId(Integer accountId);
+
 }

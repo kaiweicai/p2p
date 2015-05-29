@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="T6110">
+
+	<resultMap id="result" type="T6110">
+		<result property="f01" column="F01" />
+		<result property="f02" column="F02" jdbcType="VARCHAR"/>
+		<result property="f03" column="F03" jdbcType="VARCHAR"/>
+		<result property="f04" column="F04" jdbcType="VARCHAR"/>
+		<result property="f05" column="F05" jdbcType="VARCHAR"/>
+		<result property="f06" column="F06" />
+		<result property="f07" column="F07" />
+		<result property="f08" column="F08" />
+		<result property="f09" column="F09" />
+		<result property="f10" column="F10" />
+		<result property="f11" column="F11" />
+		<result property="f12" column="F12" />
+		<result property="f13" column="F13" />	
+	</resultMap>
+		
+	<insert id="insert" parameterType="T6110">
+		<!-- <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
+	       SELECT ROOT.SEQ_T6110.nextval from dual  
+	    </selectKey>
+	     -->  	    
+	    <![CDATA[
+			INSERT INTO S61.T6110.(
+				F01,
+				F02,
+				F03,
+				F04,
+				F05,
+				F06,
+				F07,
+				F08,
+				F09,
+				F10,
+				F11,
+				F12,
+				F13
+			)VALUES(
+				#{f01,jdbcType=NUMERIC},
+				#{f02,jdbcType=VARCHAR},
+				#{f03,jdbcType=VARCHAR},
+				#{f04,jdbcType=VARCHAR},
+				#{f05,jdbcType=VARCHAR},
+				#{f06,jdbcType=},
+				QY,
+				ZC,
+				#{f09,jdbcType=TIMESTAMP},
+				#{f10,jdbcType=},
+				0,
+				S,
+				F
+			)
+	    ]]>
+	</insert>
+	
+	<update id="update" parameterType="T6110">		
+			UPDATE S61.T6110
+			<set>
+				 
+				<if test="f01!=null" >
+					F01=#{f01,jdbcType=NUMERIC},
+				</if>
+				<if test="f02!=null" >
+					F02=#{f02,jdbcType=VARCHAR},
+				</if>
+				<if test="f03!=null" >
+					F03=#{f03,jdbcType=VARCHAR},
+				</if>
+				<if test="f04!=null" >
+					F04=#{f04,jdbcType=VARCHAR},
+				</if>
+				<if test="f05!=null" >
+					F05=#{f05,jdbcType=VARCHAR},
+				</if>
+				<if test="f06!=null" >
+					F06=#{f06,jdbcType=},
+				</if>
+				<if test="f07!=null" >
+					F07=#{f07,jdbcType=},
+				</if>
+				<if test="f08!=null" >
+					F08=#{f08,jdbcType=},
+				</if>
+				<if test="f09!=null" >
+					F09=#{f09,jdbcType=TIMESTAMP},
+				</if>
+				<if test="f10!=null" >
+					F10=#{f10,jdbcType=},
+				</if>
+				<if test="f11!=null" >
+					F11=#{f11,jdbcType=},
+				</if>
+				<if test="f12!=null" >
+					F12=#{f12,jdbcType=},
+				</if>
+				<if test="f13!=null" >
+					F13=#{f13,jdbcType=},
+				</if>
+			</set>
+			WHERE
+				F01=#{f01}		
+	</update>
+	
+	<update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE S61.T6110 SET ENABLE_FLAG=0 WHERE F01=#{f01} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM S61.T6110 WHERE F01=#{f01} ]]>
+	</delete>
+	
+	<select id="selectOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 S61.T6110
+			WHERE
+				F01=#{f01}
+		]]>
+	</select>
+	
+	<select id="findUser" parameterType="com.yiqiandai.p2p.web.user.UserModel" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 S61.T6110
+			WHERE
+				F02=#{accountName}
+		]]>
+	</select>
+	
+	<select id="selectList" parameterType="T6110"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 S61.T6110			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			
+			<if test="f01!=null">
+				AND F01=#{f01}
+			</if>
+			<if test="f02!=null and f02!='' ">
+				AND UPPER(F02) like UPPER(CONCAT(CONCAT('%', #{f02}), '%'))
+			</if>
+			<if test="f03!=null and f03!='' ">
+				AND UPPER(F03) like UPPER(CONCAT(CONCAT('%', #{f03}), '%'))
+			</if>
+			<if test="f04!=null and f04!='' ">
+				AND UPPER(F04) like UPPER(CONCAT(CONCAT('%', #{f04}), '%'))
+			</if>
+			<if test="f05!=null and f05!='' ">
+				AND UPPER(F05) like UPPER(CONCAT(CONCAT('%', #{f05}), '%'))
+			</if>
+			<if test="f06!=null" >
+				AND F06=#{f06}
+			</if>
+			<if test="f07!=null" >
+				AND F07=#{f07}
+			</if>
+			<if test="f08!=null" >
+				AND F08=#{f08}
+			</if>
+			<if test="f09!=null" >
+				AND F09=#{f09}
+			</if>
+			<if test="f10!=null" >
+				AND F10=#{f10}
+			</if>
+			<if test="f11!=null" >
+				AND F11=#{f11}
+			</if>
+			<if test="f12!=null" >
+				AND F12=#{f12}
+			</if>
+			<if test="f13!=null" >
+				AND F13=#{f13}
+			</if>
+		</where>
+			ORDER BY F01
+	</select>
+	
+	<select id="selectPage" resultMap="result">
+		<![CDATA[
+			SELECT 
+				*
+			FROM 
+				 S61.T6110			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			
+			<if test="bo.f01!=null">
+				AND F01=#{bo.f01}
+			</if>
+			<if test="bo.f02!=null and bo.f02!='' ">
+				AND UPPER(F02) like UPPER(CONCAT(CONCAT('%', #{bo.f02}), '%'))
+			</if>
+			<if test="bo.f03!=null and bo.f03!='' ">
+				AND UPPER(F03) like UPPER(CONCAT(CONCAT('%', #{bo.f03}), '%'))
+			</if>
+			<if test="bo.f04!=null and bo.f04!='' ">
+				AND UPPER(F04) like UPPER(CONCAT(CONCAT('%', #{bo.f04}), '%'))
+			</if>
+			<if test="bo.f05!=null and bo.f05!='' ">
+				AND UPPER(F05) like UPPER(CONCAT(CONCAT('%', #{bo.f05}), '%'))
+			</if>
+			<if test="bo.f06!=null" >
+				AND F06=#{bo.f06}
+			</if>
+			<if test="bo.f07!=null" >
+				AND F07=#{bo.f07}
+			</if>
+			<if test="bo.f08!=null" >
+				AND F08=#{bo.f08}
+			</if>
+			<if test="bo.f09!=null" >
+				AND F09=#{bo.f09}
+			</if>
+			<if test="bo.f10!=null" >
+				AND F10=#{bo.f10}
+			</if>
+			<if test="bo.f11!=null" >
+				AND F11=#{bo.f11}
+			</if>
+			<if test="bo.f12!=null" >
+				AND F12=#{bo.f12}
+			</if>
+			<if test="bo.f13!=null" >
+				AND F13=#{bo.f13}
+			</if>
+		</where>
+			ORDER BY ${page.sortFieldName} <if test="page.sortDesc==true">DESC</if>
+	</select>
+	
+</mapper>
+
+
+

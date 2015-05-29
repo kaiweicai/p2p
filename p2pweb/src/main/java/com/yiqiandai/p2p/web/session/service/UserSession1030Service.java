@@ -12,4 +12,8 @@ public interface UserSession1030Service extends BaseService<UserSession1030>{
 	public void updateRegister(int accountId);
 
 	public void getSession(String cookieKey);
+
+	public UserSession1030 findByAccountId(Integer f01);
+
+	public UserSession1030 insertSession(Integer f01);
 }

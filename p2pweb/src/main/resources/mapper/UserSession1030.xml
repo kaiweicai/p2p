@@ -20,8 +20,7 @@
 	    </selectKey>
 	     -->  	    
 	    <![CDATA[
-			INSERT INTO S10._1030.(
-				F01,
+			INSERT INTO S10._1030 (
 				F02,
 				F03,
 				F04,
@@ -29,13 +28,12 @@
 				F06,
 				F07
 			)VALUES(
-				#{f01,jdbcType=NUMERIC},
 				#{f02,jdbcType=VARCHAR},
 				#{f03,jdbcType=TIMESTAMP},
 				#{f04,jdbcType=NUMERIC},
 				#{f05,jdbcType=TIMESTAMP},
 				#{f06,jdbcType=VARCHAR},
-				cd0cde16932b3cf881c9e9c379c876b54f5dda90
+				#{f07,jdbcType=VARCHAR}
 			)
 	    ]]>
 	</insert>
