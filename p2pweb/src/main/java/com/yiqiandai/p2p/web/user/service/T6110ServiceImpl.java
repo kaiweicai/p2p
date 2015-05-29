@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -122,6 +123,9 @@ public class T6110ServiceImpl extends BaseServiceImpl<T6110> implements T6110Ser
 		UserSession1030 session = userSessionService.findByAccountId(t6110.getF01());
 		if(session==null){
 			session = userSessionService.insertSession(t6110.getF01());
+		}else{
+			session.setF02(UUID.randomUUID().toString());
+			userSessionService.saveOrUpdate(session);
 		}
 		return session;
 	}

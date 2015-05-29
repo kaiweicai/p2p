@@ -64,7 +64,7 @@ public class Login extends BaseController{
 			result.addError(new ObjectError("usermodel", e.getMessage()));
 			logger.warn("用户登陆错误!{}",usermodel);
 		} catch (SQLException e) {
-			logger.error("用户登陆出错。",e);
+			logger.error("用户登陆SQL异常。",e);
 		}
 		if(session!=null){
 			cookieValue = session.getF02();
