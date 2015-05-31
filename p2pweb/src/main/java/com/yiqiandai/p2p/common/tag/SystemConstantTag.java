@@ -15,6 +15,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -22,6 +23,7 @@ import com.yiqiandai.p2p.common.constant.inter.VariableBean;
 import com.yiqiandai.p2p.web.config.model.T1010;
 import com.yiqiandai.p2p.web.config.service.T1010Service;
 
+@Service
 public class SystemConstantTag extends SimpleTagSupport {
 	Logger logger = LoggerFactory.getLogger(getClass());
 	private String con;
