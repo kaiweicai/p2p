@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import com.yiqiandai.p2p.base.service.BaseServiceImpl;
 
@@ -216,5 +217,47 @@ public class T6110ServiceImpl extends BaseServiceImpl<T6110> implements T6110Ser
 //		} catch (SQLException e) {
 //			resourceProvider.log(e);
 //		}
+	}
+
+	@Override
+	public UserSession1030 checkin(UserModel usermodel, HttpServletRequest request) throws AuthenticationException,
+			SQLException {
+		try{
+			UserSession1030 session = null;
+//			String cookieKey = usermodel.getCookieKey();
+//			if (usermodel == null) {
+//				throw new AuthenticationException("用户名或密码错误.");
+//			}
+			//不做验证码的验证。
+	//		authenticateVerifyCode(authentication);
+			String captcha = usermodel.getVerifyCode();
+			String kaptcha = (String) request.getSession().getAttribute(
+					com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
+			if (!StringUtils.isEmpty(kaptcha)
+					&& kaptcha.equalsIgnoreCase(captcha)) {
+
+			} else {
+				throw new AuthenticationException("验证码错误");
+			}
+			String accountName = usermodel.getAccountName();
+			String password = usermodel.getPassword();
+			if (StringUtils.isEmpty(accountName) || StringUtils.isEmpty(password)) {
+				throw new AuthenticationException("用户名或密码不能为空！");
+			}
+			
+			T6110 t6110 = readAccountId(usermodel);
+			if(t6110 == null){
+				throw new AuthenticationException("用户名或密码不能为空！");
+			}else{
+				session = register(t6110);
+			}
+			return session;
+		}catch(AuthenticationException e){
+			logger.error("查询用户出错，用户名:{}",usermodel.getAccountName());
+			throw e;
+		} catch (SQLException e) {
+			logger.error("查询用户出错",e);
+			throw e;
+		}
 	}
 }

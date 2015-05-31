@@ -30,10 +30,17 @@
 			<label for="password" class="sr-only">Password</label>
 			<input maxlength="20" name="password" type="password" value="${usermodel.password}" class="form-control" id="password" placeholder="密码" required="required"/>
 			<label id="password_tips" class="login_tips gray"></label>
-			<div class="formgroup">
-				<label for="verifyCode" class="sr-only">verifyCode</label>
-				<input id="verifyCode" name="verifyCode" value="${usermodel.verifyCode }" type="text" class="form-control" id="textfield" maxlength="6" placeholder="验证码" required="required"/>
-				<img width="133px" height="53px" alt="验证码" id="verifyImg" alt="验证码" title="点击刷新" style="cursor: pointer;" src="/user/ValidCode/jpg?id=1"/>
+			<div class="form-group">
+				<input type="text" name="verifyCode" class="form-control"
+					placeholder="验证码" style="width: 100px; float: left;"> <img
+					id="captcha"
+					style="cursor: pointer; cursor: hand; margin-top: -13px;"
+					onclick="this.src='/user/captcha.dhtml?'+Math.random();"
+					src="/user/captcha.dhtml">
+			</div>
+			<div class="clearfix"></div>
+			<div>
+				<p class="error" for="captcha" style="display: none;"></p>
 			</div>
 			<label id="verifyError" class="login_tips"></label>
 			<div class="formgroup checkbox">

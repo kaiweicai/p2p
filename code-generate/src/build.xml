@@ -6,16 +6,23 @@
 	<!--数据库名-->
 		<property name="jdbc.driver" value="com.mysql.jdbc.Driver"/>
 	<!--数据库名-->
-		<property name="jdbc.url" value="jdbc:mysql://192.168.8.88:3306/YQD"/>
+	<!--<property name="jdbc.url" value="jdbc:mysql://192.168.8.88:3306/YQD"/>-->
+	<!--数据库名-->
+	<!--<property name="jdbc.username" value="root"/>-->
+	<!--数据库名-->
+	<!--<property name="jdbc.password" value="hDx6N7tk9T"/>	-->
+	
+	<!--数据库名-->
+		<property name="jdbc.url" value="jdbc:mysql://127.0.0.1:3306/"/>
 	<!--数据库名-->
 		<property name="jdbc.username" value="root"/>
 	<!--数据库名-->
-		<property name="jdbc.password" value="hDx6N7tk9T"/>			
+		<property name="jdbc.password" value="Yousini979"/>
 		
 	<!--创建文件的基础路径-->
-		<property name="projectPath" value="D:\gitRespons\p2pweb"/>
+		<property name="projectPath" value="D:\git\p2p\p2pweb"/>
 	<!--源文件路径-->
-		<property name="srcProjectPath" value="D:\gitRespons\code-generate"/>
+		<property name="srcProjectPath" value="D:\git\p2p\code-generate"/>
 	<!--代码路径-->
 		<property name="srcPath" value="${projectPath}\src\main\java"/>
 	<!--创建文件的基础路径-->

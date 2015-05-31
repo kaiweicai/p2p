@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Config">
+
+	<resultMap id="result" type="Config">
+		<result property="key" column="KEY" jdbcType="VARCHAR"/>
+		<result property="value" column="VALUE" jdbcType="VARCHAR"/>
+		<result property="description" column="DESCRIPTION" />
+		<result property="createtime" column="CREATETIME" />	
+	</resultMap>
+		
+	<insert id="insert" parameterType="Config">
+		<!-- <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
+	       SELECT ROOT.SEQ_CONFIG.nextval from dual  
+	    </selectKey>
+	     -->  	    
+	    <![CDATA[
+			INSERT INTO shishuocms.CONFIG.(
+				KEY,
+				VALUE,
+				DESCRIPTION,
+				CREATETIME
+			)VALUES(
+				#{key,jdbcType=VARCHAR},
+				#{value,jdbcType=VARCHAR},
+				#{description,jdbcType=},
+				#{createtime,jdbcType=TIMESTAMP}
+			)
+	    ]]>
+	</insert>
+	
+	<update id="update" parameterType="Config">		
+			UPDATE shishuocms.CONFIG
+			<set>
+				 
+				<if test="key!=null" >
+					KEY=#{key,jdbcType=VARCHAR},
+				</if>
+				<if test="value!=null" >
+					VALUE=#{value,jdbcType=VARCHAR},
+				</if>
+				<if test="description!=null" >
+					DESCRIPTION=#{description,jdbcType=},
+				</if>
+				<if test="createtime!=null" >
+					CREATETIME=#{createtime,jdbcType=TIMESTAMP},
+				</if>
+			</set>
+			WHERE
+				KEY=#{key}		
+	</update>
+	
+	<update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE shishuocms.CONFIG SET ENABLE_FLAG=0 WHERE KEY=#{key} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM shishuocms.CONFIG WHERE KEY=#{key} ]]>
+	</delete>
+	
+	<select id="selectOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 shishuocms.CONFIG
+			WHERE
+				KEY=#{key}
+		]]>
+	</select>
+	
+	<select id="findOne" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 shishuocms.CONFIG
+			WHERE
+				KEY=#{key}
+		]]>
+	</select>
+	
+	<select id="selectList" parameterType="Config"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 shishuocms.CONFIG			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			
+			<if test="key!=null and key!='' ">
+				AND UPPER(KEY) like UPPER(CONCAT(CONCAT('%', #{key}), '%'))
+			</if>
+			<if test="value!=null and value!='' ">
+				AND UPPER(VALUE) like UPPER(CONCAT(CONCAT('%', #{value}), '%'))
+			</if>
+			<if test="description!=null" >
+				AND DESCRIPTION=#{description}
+			</if>
+			<if test="createtime!=null" >
+				AND CREATETIME=#{createtime}
+			</if>
+		</where>
+			ORDER BY KEY
+	</select>
+	
+	<select id="selectPage" resultMap="result">
+		<![CDATA[
+			SELECT 
+				*
+			FROM 
+				 shishuocms.CONFIG			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			
+			<if test="bo.key!=null and bo.key!='' ">
+				AND UPPER(KEY) like UPPER(CONCAT(CONCAT('%', #{bo.key}), '%'))
+			</if>
+			<if test="bo.value!=null and bo.value!='' ">
+				AND UPPER(VALUE) like UPPER(CONCAT(CONCAT('%', #{bo.value}), '%'))
+			</if>
+			<if test="bo.description!=null" >
+				AND DESCRIPTION=#{bo.description}
+			</if>
+			<if test="bo.createtime!=null" >
+				AND CREATETIME=#{bo.createtime}
+			</if>
+		</where>
+			ORDER BY ${page.sortFieldName} <if test="page.sortDesc==true">DESC</if>
+	</select>
+	
+</mapper>
+
+
+

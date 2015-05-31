@@ -7,6 +7,7 @@ import java.text.Bidi;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
@@ -51,7 +52,7 @@ public class Login extends BaseController{
 	@RequestMapping(value="/login.dhtml",method={POST})
 	public String login(@ModelAttribute("usermodel") @Validated UserModel usermodel,
 			@CookieValue(value=SessionConstant.COOKIE_KEY, defaultValue="") String cookieKey, 
-			BindingResult result,HttpServletResponse response){
+			BindingResult result,HttpServletRequest request,HttpServletResponse response){
 		if (result.hasErrors()) {
 			return "/user/login";
 		}
@@ -59,7 +60,7 @@ public class Login extends BaseController{
 		usermodel.setCookieKey(cookieKey);
 		UserSession1030 session = null;
 		try {
-			session = userService.checkin(usermodel);
+			session = userService.checkin(usermodel,request);
 		} catch (AuthenticationException e) {
 			result.addError(new ObjectError("usermodel", e.getMessage()));
 			logger.warn("用户登陆错误!{}",usermodel);

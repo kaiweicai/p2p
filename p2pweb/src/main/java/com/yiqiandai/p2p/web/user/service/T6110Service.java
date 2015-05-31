@@ -3,6 +3,7 @@ package com.yiqiandai.p2p.web.user.service;
 import java.sql.SQLException;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import com.yiqiandai.p2p.base.service.BaseService;
 import com.yiqiandai.p2p.web.session.bo.UserSession1030;
@@ -23,4 +24,6 @@ public interface T6110Service extends BaseService<T6110>{
 	 * @throws Exception 
 	 */
 	UserSession1030 checkin(UserModel usermodel) throws AuthenticationException, SQLException;
+
+	UserSession1030 checkin(UserModel usermodel, HttpServletRequest request)throws AuthenticationException, SQLException;
 }
