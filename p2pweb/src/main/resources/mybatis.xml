@@ -18,7 +18,7 @@
 		<typeAlias alias="UserSession1030" type="com.yiqiandai.p2p.web.session.bo.UserSession1030"/>
 		<typeAlias alias="T1010" type="com.yiqiandai.p2p.web.config.model.T1010"/>
 		<typeAlias alias="T6110" type="com.yiqiandai.p2p.web.user.bo.T6110"/>
-		<typeAlias alias="Config" type="com.yiqiandai.p2p.web.config.bo.Config"/>
+		<typeAlias alias="Config" type="com.yiqiandai.p2p.web.conf.bo.Config"/>
 	</typeAliases>
 	<!-- 
 	<typeHandlers>
