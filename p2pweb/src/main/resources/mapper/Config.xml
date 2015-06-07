@@ -18,7 +18,7 @@
 	     -->  	    
 	    <![CDATA[
 			INSERT INTO shishuocms.CONFIG.(
-				KEY,
+				`KEY`,
 				VALUE,
 				DESCRIPTION,
 				CREATETIME
@@ -36,7 +36,7 @@
 			<set>
 				 
 				<if test="key!=null" >
-					KEY=#{key,jdbcType=VARCHAR},
+					`KEY`=#{key,jdbcType=VARCHAR},
 				</if>
 				<if test="value!=null" >
 					VALUE=#{value,jdbcType=VARCHAR},
@@ -66,7 +66,7 @@
 			FROM 
 				 shishuocms.CONFIG
 			WHERE
-				KEY=#{key}
+				`KEY`=#{key}
 		]]>
 	</select>
 	
@@ -76,7 +76,7 @@
 			FROM 
 				 shishuocms.CONFIG
 			WHERE
-				KEY=#{key}
+				`KEY`=#{key}
 		]]>
 	</select>
 	
