@@ -2,7 +2,7 @@
 	General Style
 --------------------------------------------------------------------------*/
 body {
-  background: url(../img/page-background.png);
+  background: url(../images/page-background.png);
 }
 .section {
   padding: 30px 0;
@@ -1317,7 +1317,7 @@ span.color-red {
   top: 5px;
   width: 24px;
   height: 24px;
-  background-image: url(../img/social-login.png);
+  background-image: url(../images/social-login.png);
   background-repeat: no-repeat;
 }
 .social-login .btn-facebook-login {
@@ -1379,7 +1379,7 @@ span.color-red {
   right: 20px;
   width: 120px;
   height: 32px;
-  background-image: url(../img/in-press.png);
+  background-image: url(../images/in-press.png);
   background-repeat: no-repeat;
   -webkit-transition: .25s linear;
   -moz-transition: .25s linear;
@@ -1730,7 +1730,7 @@ span.color-red {
   display: block;
   width: 115px;
   height: 40px;
-  background: url(../img/stay-connected.png);
+  background: url(../images/stay-connected.png);
   -webkit-opacity: 0.5;
   -moz-opacity: 0.5;
   opacity: 0.5;
@@ -1897,46 +1897,46 @@ span.color-red {
   background-position: -50px 0;
 }
 #sequence > .sequence-canvas > li.bg1 {
-  background-image: url(../img/homepage-slider/slider-bg1.jpg);
+  background-image: url(../images/homepage-slider/slider-bg1.jpg);
 }
 #sequence > .sequence-canvas > li.bg2 {
-  background-image: url(../img/homepage-slider/slider-bg2.jpg);
+  background-image: url(../images/homepage-slider/slider-bg2.jpg);
 }
 #sequence > .sequence-canvas > li.bg3 {
-  background-image: url(../img/homepage-slider/slider-bg3.jpg);
+  background-image: url(../images/homepage-slider/slider-bg3.jpg);
 }
 #sequence > .sequence-canvas > li.bg4 {
-  background-image: url(../img/homepage-slider/slider-bg4.jpg);
+  background-image: url(../images/homepage-slider/slider-bg4.jpg);
 }
 #sequence > .sequence-canvas > li.bg5 {
-  background-image: url(../img/homepage-slider/slider-bg5.jpg);
+  background-image: url(../images/homepage-slider/slider-bg5.jpg);
 }
 #sequence > .sequence-canvas > li.bg6 {
-  background-image: url(../img/homepage-slider/slider-bg6.jpg);
+  background-image: url(../images/homepage-slider/slider-bg6.jpg);
 }
 #sequence > .sequence-canvas > li.bg7 {
-  background-image: url(../img/homepage-slider/slider-bg7.jpg);
+  background-image: url(../images/homepage-slider/slider-bg7.jpg);
 }
 #sequence > .sequence-canvas > li.bg8 {
-  background-image: url(../img/homepage-slider/slider-bg8.jpg);
+  background-image: url(../images/homepage-slider/slider-bg8.jpg);
 }
 #sequence > .sequence-canvas > li.bg9 {
-  background-image: url(../img/homepage-slider/slider-bg9.jpg);
+  background-image: url(../images/homepage-slider/slider-bg9.jpg);
 }
 #sequence > .sequence-canvas > li.bg10 {
-  background-image: url(../img/homepage-slider/slider-bg10.jpg);
+  background-image: url(../images/homepage-slider/slider-bg10.jpg);
 }
 #sequence > .sequence-canvas > li.bg11 {
-  background-image: url(../img/homepage-slider/slider-bg11.jpg);
+  background-image: url(../images/homepage-slider/slider-bg11.jpg);
 }
 #sequence > .sequence-canvas > li.bg12 {
-  background-image: url(../img/homepage-slider/slider-bg12.jpg);
+  background-image: url(../images/homepage-slider/slider-bg12.jpg);
 }
 #sequence > .sequence-canvas > li.bg13 {
-  background-image: url(../img/homepage-slider/slider-bg13.jpg);
+  background-image: url(../images/homepage-slider/slider-bg13.jpg);
 }
 #sequence > .sequence-canvas > li.bg14 {
-  background-image: url(../img/homepage-slider/slider-bg14.jpg);
+  background-image: url(../images/homepage-slider/slider-bg14.jpg);
 }
 #sequence > .sequence-canvas > li img {
   height: 96%;
@@ -2236,7 +2236,7 @@ span.color-red {
 /* LOADER */
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background: url(../img/bx_loader.gif) center center no-repeat #fff;
+  background: url(../images/bx_loader.gif) center center no-repeat #fff;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -2281,11 +2281,11 @@ span.color-red {
 /* DIRECTION CONTROLS (NEXT / PREV) */
 .bx-wrapper .bx-prev {
   left: 10px;
-  background: url(../img/controls.png) no-repeat 0 -32px;
+  background: url(../images/controls.png) no-repeat 0 -32px;
 }
 .bx-wrapper .bx-next {
   right: 10px;
-  background: url(../img/controls.png) no-repeat -43px -32px;
+  background: url(../images/controls.png) no-repeat -43px -32px;
 }
 .bx-wrapper .bx-prev:hover {
   background-position: 0 0;
@@ -2316,7 +2316,7 @@ span.color-red {
   width: 10px;
   height: 11px;
   outline: 0;
-  background: url(../img/controls.png) -86px -11px no-repeat;
+  background: url(../images/controls.png) -86px -11px no-repeat;
   margin: 0 3px;
 }
 .bx-wrapper .bx-controls-auto .bx-start:hover,
@@ -2329,7 +2329,7 @@ span.color-red {
   width: 9px;
   height: 11px;
   outline: 0;
-  background: url(../img/controls.png) -86px -44px no-repeat;
+  background: url(../images/controls.png) -86px -44px no-repeat;
   margin: 0 3px;
 }
 .bx-wrapper .bx-controls-auto .bx-stop:hover,
@@ -2667,3 +2667,25 @@ span.color-red {
 .dropdown.open a.dropdown-toggle .caret {
   border-top: 4px solid #FFF;
 }
+
+/* 登陆注册展示 */
+.login { position: absolute; right: 150px; top: 180px; width: 280px; height: 260px; }
+.login-bg { position: absolute; left: 0; top: 0; width: 280px; height: 260px; background-color: #000; opacity: 0.4; filter: alpha(opacity=40); }
+.login-tab { position: absolute; z-index: 20; right: 0; top: 0; width: 280px; height: 250px; }
+.login-tab .ui-tab-head { height: 40px; }
+.login-tab .ui-tab-head ul li { float: left; position: relative; width: 140px; height: 40px; font-size: 14px; line-height: 40px; color: #CCC; text-align: center; cursor: pointer; }
+.login-tab .ui-tab-head ul li.ui-tab-head-current { font-size: 16px; font-weight: bold; color: #FFF; }
+.login-tab .ui-tab-head .ui-tab-head-bg { display: block; position: absolute; left: 0; top: 0; width: 140px; height: 40px; background-color: #fff; opacity: 0.1; filter: alpha(opacity=10); }
+.login-tab .ui-tab-head ul li.ui-tab-head-current .ui-tab-head-bg { display: none; }
+.login-form { padding: 30px 30px 0; }
+.login-form li { padding-bottom: 10px; }
+.login-input { padding: 5px 8px; width: 204px; height: 20px; line-height: 20px; border: none; background-color: #fff; }
+.login-input.captcha { float: left; width: 104px; }
+.btn-captcha { float: right; width: 90px; height: 30px; line-height: 30px; text-align: center; background-color: #ddd; border: 0; cursor: pointer; }
+.login-forget a,.login-forget a:hover{ color: #fff; }
+.btn-login { display: block; width: 220px; height: 36px; text-align: center; line-height: 36px; font-size: 14px; color: #fff; background-color: #ef4349; border: none; cursor: pointer; }
+a.btn-login:hover { color: #fff; text-decoration: none; }
+.login-form .btn-login:hover {background:#ff4663;}
+.login-tips { float: none; padding-top: 5px; color: #fff; }
+.login-form li.fn-clear .login-tips { float: left; width: 220px; }
+.login-tips a,.login-tips a:hover{ color: #ffd800; }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yiqiandai.p2p.common.constant.WEBConstant;
 import com.yiqiandai.p2p.common.utils.HttpUtils;
 import com.yiqiandai.p2p.web.conf.service.ConfigService;
 
@@ -36,6 +37,9 @@ import com.yiqiandai.p2p.web.conf.service.ConfigService;
 			String basePath = HttpUtils.getBasePath(request);
 			modelAndView.addObject("BASE_PATH", basePath);
 			modelAndView.addObject("UPLOAD_BASE_PATH", basePath + "/upload");
+			modelAndView.addObject("Keywords", WEBConstant.KEYWORD);
+			modelAndView.addObject("Description", WEBConstant.DESCRIPTION);
+			
 //			modelAndView
 //					.addObject(
 //							"TEMPLATE_BASE_PATH",

@@ -182,5 +182,9 @@
 	       <mvc:mapping path="/**" /><!-- 如果不配置或/*,将拦截所有的Controller -->
 	       <bean class="com.yiqiandai.p2p.base.interceptor.AuthInterceptor"></bean>
 	    </mvc:interceptor>
+	    <mvc:interceptor>
+	       <mvc:mapping path="/**" /><!-- 如果不配置或/*,将拦截所有的Controller -->
+	       <bean class="com.yiqiandai.p2p.base.interceptor.GlobalInterceptor"></bean>
+	    </mvc:interceptor>
 	</mvc:interceptors>
 </beans>
