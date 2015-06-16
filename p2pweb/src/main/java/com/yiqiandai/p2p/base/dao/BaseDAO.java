@@ -5,6 +5,8 @@ package com.yiqiandai.p2p.base.dao;
 
 import java.util.List;
 
+import com.yiqiandai.p2p.base.model.Paginator;
+
 /**
  * @author chenh
  * @date 2013年8月12日
@@ -55,4 +57,11 @@ public interface BaseDAO<T>{
 	 */
 	public List<T> findList(T bo);
 	
+	/**
+	 * 分页查询
+	 * @param bo
+	 * @param page  分页器
+	 * @
+	 */
+	public List<T> selectPage(T bo,Paginator<T> page);
 }

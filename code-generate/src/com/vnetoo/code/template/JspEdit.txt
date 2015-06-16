@@ -1,12 +1,29 @@
-<#import "/WEB-INF/htm/common/tag.htm" as tag>
-<form id="tb_input" method="post" action="${webroot}/${baseName.lowerFirst}!save.action">
-<div class="input_box" style="width:800px">
-	<div class="box_title"><#if ${baseName.lowerFirst}.id??>修改<#else>添加</#if>${tableComment}</div>
-	<div class="box_content"><@tag.token/>
-		<input type="hidden" name="${baseName.lowerFirst}.id" id="${baseName.lowerFirst}.id" value="<#if ${baseName.lowerFirst}.id??>${${baseName.lowerFirst}.id?c!0}</#if>">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<%@include file="/WEB-INF/jsp/inc/layout.jsp"%>
+	<%@include file="/WEB-INF/jsp/inc/meta.jsp"%>
+    <meta charset="UTF-8">
+    <title>专业的融资服务交易平台－商道界</title>
+	<meta name="Keywords" content="${Keywords} " />
+	<meta name="Description" content="${Description}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+</head>
+<div class="container">
+<form id="tb_input" method="post" action="${webroot}/${baseName.lowerFirst}/save.dhtml">
+<div class="input_box">
+	<div class="box_title">
+		<c:if test="${${baseName.lowerFirst}.id}!=null">修改${tableComment}</c:if>
+		<c:if test="${${baseName.lowerFirst}.id}==null">添加${tableComment}</c:if>
+	</div>
+	<div class="box_content">
+		<input type="hidden" name="token" value="${token}" />
+		<input type="hidden" name="${${baseName.lowerFirst}.id}" id="${${baseName.lowerFirst}.id}" value="${${baseName.lowerFirst}.id}">
 		<table class="tb_input" >
 			<tbody>
-${tr_list}			
+				${tr_list}
 			</tbody>
 		</table>
 	</div>
@@ -18,7 +35,7 @@ ${tr_list}
 	</div>
 </div>
 </form>
-
+</div>
 
 <script type="text/javascript">
 $(function(){
@@ -44,10 +61,10 @@ function submit${baseName}(){
 	$.post($('#tb_input').attr("action"), $('#tb_input').formSerialize(), function(response){
 			if(response.result==0){
 				$.colorbox.close();
-				jAlert('<#if ${baseName.lowerFirst}.id??>修改<#else>添加</#if>${tableComment}成功！',function(){pageQuery()});
+				jAlert('<#if ${${baseName.lowerFirst}.id}??>修改<#else>添加</#if>${tableComment}成功！',function(){pageQuery()});
 			}
 			else{
-				jAlertError('<#if ${baseName.lowerFirst}.id??>修改<#else>添加</#if>${tableComment}失败！'+response.msg,function(){$("#tb_input").find("input[id='token']").val(response.token);});
+				jAlertError('<#if ${${baseName.lowerFirst}.id}??>修改<#else>添加</#if>${tableComment}失败！'+response.msg,function(){$("#tb_input").find("input[id='token']").val(response.token);});
 			}
 	},"json");
 	

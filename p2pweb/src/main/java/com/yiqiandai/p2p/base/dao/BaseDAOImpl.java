@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.yiqiandai.p2p.base.model.BaseObject;
+import com.yiqiandai.p2p.base.model.PageParam;
+import com.yiqiandai.p2p.base.model.Paginator;
 import com.yiqiandai.p2p.common.annotation.BoName;
 import com.yiqiandai.p2p.common.annotation.MybatisNamespace;
 
@@ -111,15 +113,15 @@ public class BaseDAOImpl<T extends BaseObject> implements BaseDAO<T>{
 		return getSqlSessionTemplate().selectList(getStatement(), bo);		
 	}
 	
-//	/**
-//	 * 分页查询
-//	 * @param bo
-//	 * @param page  分页器
-//	 * @
-//	 */
-//	public List<T> selectPage(T bo,Paginator<T> page){
-//		List<T> list = getSqlSessionTemplate().selectList(getStatement(), new PageParam<T>(bo,page));
-//		page.setResultList(list);
-//		return list;
-//	}
+	/**
+	 * 分页查询
+	 * @param bo
+	 * @param page  分页器
+	 * @
+	 */
+	public List<T> selectPage(T bo,Paginator<T> page){
+		List<T> list = getSqlSessionTemplate().selectList(getStatement(), new PageParam<T>(bo,page));
+		page.setResultList(list);
+		return list;
+	}
 }

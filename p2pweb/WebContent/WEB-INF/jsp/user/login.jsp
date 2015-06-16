@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<%@include file="/WEB-INF/jsp/inc/layout.html"%>
+<%@include file="/WEB-INF/jsp/inc/layout.jsp"%>
 <meta name="description" content="魏勇测试">
 <meta name="author" content="cloud.wei">
 <link rel="icon" href="http://www.yiqiandai.com/images/news_icons.gif">
-<%@include file="/WEB-INF/jsp/user/loginmeta.jsp"%>
+<%@include file="/WEB-INF/jsp/inc/meta.jsp"%>
 <title>用户登录</title>
 </head>
 <body>

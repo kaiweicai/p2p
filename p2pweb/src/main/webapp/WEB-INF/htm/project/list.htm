@@ -1,0 +1,76 @@
+<#import "/WEB-INF/htm/common/page.htm" as page>
+<@page.info/>
+<table class="tblist f_tblist">
+	<thead>
+		<tr>
+			<th><input type="checkbox" id="checkboxAll" value="0" onclick="selectForAll(this)"/></th>
+			<th>序号</th>
+			<th>&nbsp;项目ID</th>
+			<th>&nbsp;项目标题</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;融资主体 1.企业,2.政府,3.企业</th>
+			<th>&nbsp;参考industryMap</th>
+			<th>&nbsp;去年营业额,省略小数(万元)</th>
+			<th>&nbsp;融资用途</th>
+			<th>&nbsp;融资用途</th>
+			<th>&nbsp;融资金额最小值</th>
+			<th>&nbsp;融资金额最大值</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;意向资金</th>
+			<th>&nbsp;债权融资</th>
+			<th>&nbsp;股权融资</th>
+			<th>&nbsp;整体转让</th>
+			<th>&nbsp;其他融资</th>
+			<th>&nbsp;可提供资料</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;项目优势</th>
+			<th>&nbsp;其它备注</th>
+			<th>&nbsp;</th>
+
+			<th>查看</th>
+			<th>编辑</th>
+			<th>删除</th>			
+		</tr>
+	</thead>
+	<tbody>
+		<#list paginator.resultList as item>
+		<tr <#if item_index%2==1>class="even"</#if>>
+			<td>&nbsp;<input name="checkbox${item.id}"  value="${item.id?c!0}" type="checkbox" onclick="selectOne(this)"/></td>
+			<td>&nbsp;${paginator.startRowNum+item_index+1}</td>
+			<td>&nbsp;<#if item.id??>${item.id?c!0}</#if></td>
+			<td>&nbsp;<#if item.title??>${item.title}</#if></td>
+			<td>&nbsp;<#if item.province??>${item.province}</#if></td>
+			<td>&nbsp;<#if item.city??>${item.city}</#if></td>
+			<td>&nbsp;<#if item.couty??>${item.couty}</#if></td>
+		<td>&nbsp;${item.subject}</td>
+		<td>&nbsp;${item.industry}</td>
+		<td>&nbsp;${item.turnoverLastYear}</td>
+		<td>&nbsp;${item.netValue}</td>
+			<td>&nbsp;<#if item.finaceUse??>${item.finaceUse}</#if></td>
+		<td>&nbsp;${item.finaceAmountMin}</td>
+		<td>&nbsp;${item.finaceAmountMax}</td>
+		<td>&nbsp;${item.investAmount}</td>
+			<td>&nbsp;<#if item.intendFund??>${item.intendFund?c!0}</#if></td>
+		<td>&nbsp;${item.debtFinacialing}</td>
+		<td>&nbsp;${item.equityFinacialing}</td>
+		<td>&nbsp;${item.overallTransfer}</td>
+		<td>&nbsp;${item.otherFinacialing}</td>
+		<td>&nbsp;${item.material}</td>
+			<td>&nbsp;<#if item.description??>${item.description}</#if></td>
+			<td>&nbsp;<#if item.advantage??>${item.advantage}</#if></td>
+			<td>&nbsp;<#if item.memo??>${item.memo}</#if></td>
+			<td>&nbsp;<#if item.tag??>${item.tag}</#if></td>
+
+			<td><a class="f_tblist_show"  href="${webroot}/project!show.action?project.id=${item.id?c!0}"><img src="${webroot}/img/crud/magnifier.png" title="查看"/></a></td>
+			<td><a class="f_tblist_edit"  href="${webroot}/project!toCreateOrUpdate.action?project.id=${item.id?c!0}"><img src="${webroot}/img/crud/user_edit.png" title="编辑"/></a></td>
+			<td><a class="f_single_delete" href="${webroot}/project!remove.action?project.id=${item.id?c!0}"><img src="${webroot}/img/crud/trash.png" title="删除"/></a></td>			
+		</tr>
+		</#list>	
+		<@page.blank cellCount="28"/>
+	</tbody>	
+</table>
+
+
+

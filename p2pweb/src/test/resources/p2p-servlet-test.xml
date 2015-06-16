@@ -102,7 +102,6 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="suffix" value=".jsp" />
 	</bean>
     <bean id="urlMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
-    <bean name="/test.dhtml" class="com.yiqiandai.p2p.experience.controller.HelloWorldController"/>
 	<!-- 处理器
     <import resource="classpath:ExperienceServiceBean.xml"/>
     <import resource="classpath:ExperienceDao.xml"/>

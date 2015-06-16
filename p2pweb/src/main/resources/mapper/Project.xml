@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Project">
+
+	<resultMap id="result" type="Project">
+		<result property="id" column="ID" />
+		<result property="title" column="TITLE" jdbcType="VARCHAR"/>
+		<result property="province" column="PROVINCE" jdbcType="VARCHAR"/>
+		<result property="city" column="CITY" jdbcType="VARCHAR"/>
+		<result property="couty" column="COUTY" jdbcType="VARCHAR"/>
+		<result property="subject" column="SUBJECT" jdbcType="SMALLINT"/>
+		<result property="industry" column="INDUSTRY" jdbcType="SMALLINT"/>
+		<result property="turnoverLastYear" column="TURNOVER_LAST_YEAR" jdbcType="SMALLINT"/>
+		<result property="netValue" column="NET_VALUE" jdbcType="SMALLINT"/>
+		<result property="finaceUse" column="FINACE_USE" jdbcType="VARCHAR"/>
+		<result property="finaceAmountMin" column="FINACE_AMOUNT_MIN" />
+		<result property="finaceAmountMax" column="FINACE_AMOUNT_MAX" />
+		<result property="investAmount" column="INVEST_AMOUNT" />
+		<result property="intendFund" column="INTEND_FUND" />
+		<result property="debtFinacialing" column="DEBT_FINACIALING" />
+		<result property="equityFinacialing" column="EQUITY_FINACIALING" />
+		<result property="overallTransfer" column="OVERALL_TRANSFER" />
+		<result property="otherFinacialing" column="OTHER_FINACIALING" />
+		<result property="material" column="MATERIAL" jdbcType="SMALLINT"/>
+		<result property="description" column="DESCRIPTION" jdbcType="VARCHAR"/>
+		<result property="advantage" column="ADVANTAGE" jdbcType="VARCHAR"/>
+		<result property="memo" column="MEMO" jdbcType="VARCHAR"/>
+		<result property="tag" column="TAG" jdbcType="VARCHAR"/>	
+	</resultMap>
+		
+	<insert id="insert" parameterType="Project">
+		<!-- <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
+	       SELECT ROOT.SEQ_PROJECT.nextval from dual  
+	    </selectKey>
+	     -->  	    
+	    <![CDATA[
+			INSERT INTO sdj.PROJECT.(
+				ID,
+				TITLE,
+				PROVINCE,
+				CITY,
+				COUTY,
+				SUBJECT,
+				INDUSTRY,
+				TURNOVER_LAST_YEAR,
+				NET_VALUE,
+				FINACE_USE,
+				FINACE_AMOUNT_MIN,
+				FINACE_AMOUNT_MAX,
+				INVEST_AMOUNT,
+				INTEND_FUND,
+				DEBT_FINACIALING,
+				EQUITY_FINACIALING,
+				OVERALL_TRANSFER,
+				OTHER_FINACIALING,
+				MATERIAL,
+				DESCRIPTION,
+				ADVANTAGE,
+				MEMO,
+				TAG
+			)VALUES(
+				#{id,jdbcType=NUMERIC},
+				#{title,jdbcType=VARCHAR},
+				#{province,jdbcType=VARCHAR},
+				#{city,jdbcType=VARCHAR},
+				#{couty,jdbcType=VARCHAR},
+				#{subject,jdbcType=SMALLINT},
+				#{industry,jdbcType=SMALLINT},
+				0,
+				0,
+				#{finaceUse,jdbcType=VARCHAR},
+				#{finaceAmountMin,jdbcType=SMALLINT},
+				#{finaceAmountMax,jdbcType=SMALLINT},
+				#{investAmount,jdbcType=SMALLINT},
+				#{intendFund,jdbcType=NUMERIC},
+				#{debtFinacialing,jdbcType=BIT},
+				#{equityFinacialing,jdbcType=BIT},
+				#{overallTransfer,jdbcType=BIT},
+				#{otherFinacialing,jdbcType=}BIT,
+				#{material,jdbcType=SMALLINT},
+				#{description,jdbcType=VARCHAR},
+				#{advantage,jdbcType=VARCHAR},
+				#{memo,jdbcType=VARCHAR},
+				#{tag,jdbcType=VARCHAR}
+			)
+	    ]]>
+	</insert>
+	
+	<update id="update" parameterType="Project">		
+			UPDATE sdj.PROJECT
+			<set>
+				 
+				<if test="title!=null" >
+					TITLE=#{title,jdbcType=VARCHAR},
+				</if>
+				<if test="province!=null" >
+					PROVINCE=#{province,jdbcType=VARCHAR},
+				</if>
+				<if test="city!=null" >
+					CITY=#{city,jdbcType=VARCHAR},
+				</if>
+				<if test="couty!=null" >
+					COUTY=#{couty,jdbcType=VARCHAR},
+				</if>
+				<if test="subject!=null" >
+					SUBJECT=#{subject,jdbcType=SMALLINT},
+				</if>
+				<if test="industry!=null" >
+					INDUSTRY=#{industry,jdbcType=SMALLINT},
+				</if>
+				<if test="turnoverLastYear!=null" >
+					TURNOVER_LAST_YEAR=#{turnoverLastYear,jdbcType=SMALLINT},
+				</if>
+				<if test="netValue!=null" >
+					NET_VALUE=#{netValue,jdbcType=SMALLINT},
+				</if>
+				<if test="finaceUse!=null" >
+					FINACE_USE=#{finaceUse,jdbcType=VARCHAR},
+				</if>
+				<if test="finaceAmountMin!=null" >
+					FINACE_AMOUNT_MIN=#{finaceAmountMin,jdbcType=SMALLINT},
+				</if>
+				<if test="finaceAmountMax!=null" >
+					FINACE_AMOUNT_MAX=#{finaceAmountMax,jdbcType=SMALLINT},
+				</if>
+				<if test="investAmount!=null" >
+					INVEST_AMOUNT=#{investAmount,jdbcType=SMALLINT},
+				</if>
+				<if test="intendFund!=null" >
+					INTEND_FUND=#{intendFund,jdbcType=NUMERIC},
+				</if>
+				<if test="debtFinacialing!=null" >
+					DEBT_FINACIALING=#{debtFinacialing,jdbcType=BIT},
+				</if>
+				<if test="equityFinacialing!=null" >
+					EQUITY_FINACIALING=#{equityFinacialing,jdbcType=BIT},
+				</if>
+				<if test="overallTransfer!=null" >
+					OVERALL_TRANSFER=#{overallTransfer,jdbcType=BIT},
+				</if>
+				<if test="otherFinacialing!=null" >
+					OTHER_FINACIALING=#{otherFinacialing,jdbcType=BIT},
+				</if>
+				<if test="material!=null" >
+					MATERIAL=#{material,jdbcType=SMALLINT},
+				</if>
+				<if test="description!=null" >
+					DESCRIPTION=#{description,jdbcType=VARCHAR},
+				</if>
+				<if test="advantage!=null" >
+					ADVANTAGE=#{advantage,jdbcType=VARCHAR},
+				</if>
+				<if test="memo!=null" >
+					MEMO=#{memo,jdbcType=VARCHAR},
+				</if>
+				<if test="tag!=null" >
+					TAG=#{tag,jdbcType=VARCHAR},
+				</if>
+			</set>
+			WHERE
+				ID=#{id}		
+	</update>
+	
+	<update id="deleteLogic" parameterType="java.lang.Integer">
+		<![CDATA[UPDATE sdj.PROJECT SET ENABLE_FLAG=0 WHERE ID=#{id} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		<![CDATA[DELETE FROM sdj.PROJECT WHERE ID=#{id} ]]>
+	</delete>
+	
+	<select id="findOne" parameterType="java.lang.Integer" resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 sdj.PROJECT
+			WHERE
+				ID=#{id}
+		]]>
+	</select>
+	
+	<select id="findList" parameterType="Project"  resultMap="result">
+		<![CDATA[
+			SELECT *
+			FROM 
+				 sdj.PROJECT			
+		]]>
+		<where>			
+			ENABLE_FLAG=1			
+			<if test="id!=null">
+				AND ID=#{id}
+			</if>
+			<if test="title!=null and title!='' ">
+				AND UPPER(TITLE) like UPPER(CONCAT(CONCAT('%', #{title}), '%'))
+			</if>
+			<if test="province!=null and province!='' ">
+				AND UPPER(PROVINCE) like UPPER(CONCAT(CONCAT('%', #{province}), '%'))
+			</if>
+			<if test="city!=null and city!='' ">
+				AND UPPER(CITY) like UPPER(CONCAT(CONCAT('%', #{city}), '%'))
+			</if>
+			<if test="couty!=null and couty!='' ">
+				AND UPPER(COUTY) like UPPER(CONCAT(CONCAT('%', #{couty}), '%'))
+			</if>
+			<if test="subject!=null" >
+				AND SUBJECT=#{subject}
+			</if>
+			<if test="industry!=null" >
+				AND INDUSTRY=#{industry}
+			</if>
+			<if test="turnoverLastYear!=null" >
+				AND TURNOVER_LAST_YEAR=#{turnoverLastYear}
+			</if>
+			<if test="netValue!=null" >
+				AND NET_VALUE=#{netValue}
+			</if>
+			<if test="finaceUse!=null and finaceUse!='' ">
+				AND UPPER(FINACE_USE) like UPPER(CONCAT(CONCAT('%', #{finaceUse}), '%'))
+			</if>
+			<if test="finaceAmountMin!=null" >
+				AND FINACE_AMOUNT_MIN=#{finaceAmountMin}
+			</if>
+			<if test="finaceAmountMax!=null" >
+				AND FINACE_AMOUNT_MAX=#{finaceAmountMax}
+			</if>
+			<if test="investAmount!=null" >
+				AND INVEST_AMOUNT=#{investAmount}
+			</if>
+			<if test="intendFund!=null">
+				AND INTEND_FUND=#{intendFund}
+			</if>
+			<if test="debtFinacialing!=null" >
+				AND DEBT_FINACIALING=#{debtFinacialing}
+			</if>
+			<if test="equityFinacialing!=null" >
+				AND EQUITY_FINACIALING=#{equityFinacialing}
+			</if>
+			<if test="overallTransfer!=null" >
+				AND OVERALL_TRANSFER=#{overallTransfer}
+			</if>
+			<if test="otherFinacialing!=null" >
+				AND OTHER_FINACIALING=#{otherFinacialing}
+			</if>
+			<if test="material!=null" >
+				AND MATERIAL=#{material}
+			</if>
+			<if test="description!=null and description!='' ">
+				AND UPPER(DESCRIPTION) like UPPER(CONCAT(CONCAT('%', #{description}), '%'))
+			</if>
+			<if test="advantage!=null and advantage!='' ">
+				AND UPPER(ADVANTAGE) like UPPER(CONCAT(CONCAT('%', #{advantage}), '%'))
+			</if>
+			<if test="memo!=null and memo!='' ">
+				AND UPPER(MEMO) like UPPER(CONCAT(CONCAT('%', #{memo}), '%'))
+			</if>
+			<if test="tag!=null and tag!='' ">
+				AND UPPER(TAG) like UPPER(CONCAT(CONCAT('%', #{tag}), '%'))
+			</if>
+		</where>
+			ORDER BY ID
+	</select>
+	
+	<select id="findPage" resultMap="result">
+		<![CDATA[
+			SELECT 
+				*
+			FROM 
+				 sdj.PROJECT			
+		]]>
+		<where>			
+			1=1			
+			<if test="bo.id!=null">
+				AND ID=#{bo.id}
+			</if>
+			<if test="bo.title!=null and bo.title!='' ">
+				AND UPPER(TITLE) like UPPER(CONCAT(CONCAT('%', #{bo.title}), '%'))
+			</if>
+			<if test="bo.province!=null and bo.province!='' ">
+				AND UPPER(PROVINCE) like UPPER(CONCAT(CONCAT('%', #{bo.province}), '%'))
+			</if>
+			<if test="bo.city!=null and bo.city!='' ">
+				AND UPPER(CITY) like UPPER(CONCAT(CONCAT('%', #{bo.city}), '%'))
+			</if>
+			<if test="bo.couty!=null and bo.couty!='' ">
+				AND UPPER(COUTY) like UPPER(CONCAT(CONCAT('%', #{bo.couty}), '%'))
+			</if>
+			<if test="bo.subject!=null" >
+				AND SUBJECT=#{bo.subject}
+			</if>
+			<if test="bo.industry!=null" >
+				AND INDUSTRY=#{bo.industry}
+			</if>
+			<if test="bo.turnoverLastYear!=null" >
+				AND TURNOVER_LAST_YEAR=#{bo.turnoverLastYear}
+			</if>
+			<if test="bo.netValue!=null" >
+				AND NET_VALUE=#{bo.netValue}
+			</if>
+			<if test="bo.finaceUse!=null and bo.finaceUse!='' ">
+				AND UPPER(FINACE_USE) like UPPER(CONCAT(CONCAT('%', #{bo.finaceUse}), '%'))
+			</if>
+			<if test="bo.finaceAmountMin!=null" >
+				AND FINACE_AMOUNT_MIN=#{bo.finaceAmountMin}
+			</if>
+			<if test="bo.finaceAmountMax!=null" >
+				AND FINACE_AMOUNT_MAX=#{bo.finaceAmountMax}
+			</if>
+			<if test="bo.investAmount!=null" >
+				AND INVEST_AMOUNT=#{bo.investAmount}
+			</if>
+			<if test="bo.intendFund!=null">
+				AND INTEND_FUND=#{bo.intendFund}
+			</if>
+			<if test="bo.debtFinacialing!=null" >
+				AND DEBT_FINACIALING=#{bo.debtFinacialing}
+			</if>
+			<if test="bo.equityFinacialing!=null" >
+				AND EQUITY_FINACIALING=#{bo.equityFinacialing}
+			</if>
+			<if test="bo.overallTransfer!=null" >
+				AND OVERALL_TRANSFER=#{bo.overallTransfer}
+			</if>
+			<if test="bo.otherFinacialing!=null" >
+				AND OTHER_FINACIALING=#{bo.otherFinacialing}
+			</if>
+			<if test="bo.material!=null" >
+				AND MATERIAL=#{bo.material}
+			</if>
+			<if test="bo.description!=null and bo.description!='' ">
+				AND UPPER(DESCRIPTION) like UPPER(CONCAT(CONCAT('%', #{bo.description}), '%'))
+			</if>
+			<if test="bo.advantage!=null and bo.advantage!='' ">
+				AND UPPER(ADVANTAGE) like UPPER(CONCAT(CONCAT('%', #{bo.advantage}), '%'))
+			</if>
+			<if test="bo.memo!=null and bo.memo!='' ">
+				AND UPPER(MEMO) like UPPER(CONCAT(CONCAT('%', #{bo.memo}), '%'))
+			</if>
+			<if test="bo.tag!=null and bo.tag!='' ">
+				AND UPPER(TAG) like UPPER(CONCAT(CONCAT('%', #{bo.tag}), '%'))
+			</if>
+		</where>
+			ORDER BY ${page.sortFieldName} <if test="page.sortDesc==true">DESC</if>
+	</select>
+	
+</mapper>
+
+
+

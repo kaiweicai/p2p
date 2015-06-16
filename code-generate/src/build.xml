@@ -28,12 +28,12 @@
 	<!--创建文件的基础路径-->
 		<property name="cfgPath" value="${projectPath}\src\main\resources"/>
 	<!--源文件路径-->
-		<property name="jspPath" value="${projectPath}\src\main\webapp\WEB-INF\htm"/>
+		<property name="jspPath" value="${projectPath}\WebContent\WEB-INF\jsp"/>
 	<!--包路径-->
 		<property name="FILEPATH_BO" value="bo"/>
 		<property name="FILEPATH_DAO" value="dao"/>	
 		<property name="FILEPATH_SERVICE" value="service"/>	
-		<property name="FILEPATH_VIEW" value="view"/>
+		<property name="FILEPATH_VIEW" value="controller"/>
 	
 	<!--数据库名-->
 		<property name="dbName" value="YQD"/>	

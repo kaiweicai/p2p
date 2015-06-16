@@ -19,6 +19,7 @@
 		<typeAlias alias="T1010" type="com.yiqiandai.p2p.web.config.model.T1010"/>
 		<typeAlias alias="T6110" type="com.yiqiandai.p2p.web.user.bo.T6110"/>
 		<typeAlias alias="Config" type="com.yiqiandai.p2p.web.conf.bo.Config"/>
+		<typeAlias alias="Project" type="com.yiqiandai.p2p.web.project.bo.Project"/>
 	</typeAliases>
 	<!-- 
 	<typeHandlers>
@@ -41,5 +42,6 @@
 		<mapper resource="mapper/T1010Mapper.xml"/>
 		<mapper resource="mapper/T6110.xml"/>
 		<mapper resource="mapper/Config.xml"/>
+		<mapper resource="mapper/Project.xml"/>
 	</mappers>
 </configuration>

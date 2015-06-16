@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	<%@include file="/WEB-INF/jsp/inc/layout.html"%>
-	<%@include file="/WEB-INF/jsp/user/loginmeta.jsp"%>
+	<%@include file="/WEB-INF/jsp/inc/layout.jsp"%>
+	<%@include file="/WEB-INF/jsp/inc/meta.jsp"%>
     <meta charset="UTF-8">
     <title>专业的融资服务交易平台－商道界</title>
 	<meta name="Keywords" content="${Keywords} " />

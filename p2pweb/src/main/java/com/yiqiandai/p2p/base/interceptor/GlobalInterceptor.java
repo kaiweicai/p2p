@@ -36,6 +36,7 @@ import com.yiqiandai.p2p.web.conf.service.ConfigService;
 			// 系统配置参数
 			String basePath = HttpUtils.getBasePath(request);
 			modelAndView.addObject("BASE_PATH", basePath);
+			modelAndView.addObject("webroot", basePath);
 			modelAndView.addObject("UPLOAD_BASE_PATH", basePath + "/upload");
 			modelAndView.addObject("Keywords", WEBConstant.KEYWORD);
 			modelAndView.addObject("Description", WEBConstant.DESCRIPTION);

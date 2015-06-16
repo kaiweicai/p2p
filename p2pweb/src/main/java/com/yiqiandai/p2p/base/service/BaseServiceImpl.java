@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yiqiandai.p2p.base.dao.BaseDAO;
 import com.yiqiandai.p2p.base.model.BaseObject;
+import com.yiqiandai.p2p.base.model.Paginator;
 
 
 /**
@@ -60,9 +61,9 @@ public class BaseServiceImpl<T extends BaseObject> implements BaseService<T>{
 		return dao.findList(bo);
 	}
 
-//	public List<T> pageQuery(T bo, Paginator<T> page) {
-//		return dao.selectPage(bo, page);
-//	}
+	public List<T> pageQuery(T bo, Paginator<T> page) {
+		return dao.selectPage(bo, page);
+	}
 
 
 }

@@ -5,6 +5,8 @@ package com.yiqiandai.p2p.base.service;
 
 import java.util.List;
 
+import com.yiqiandai.p2p.base.model.Paginator;
+
 /**
  * @author chenh
  * @date 2013年8月13日
@@ -46,12 +48,12 @@ public interface BaseService<T> {
 	 */
 	public List<T> dynamicQuery(T bo);
 	
-//	/**
-//	 * 分页查询
-//	 * @param bo
-//	 * @param page  分页器
-//	 * @
-//	 */
-//	public List<T> pageQuery(T bo,Paginator<T> page);
-//	
+	/**
+	 * 分页查询
+	 * @param bo
+	 * @param page  分页器
+	 * @
+	 */
+	public List<T> pageQuery(T bo,Paginator<T> page);
+	
 }

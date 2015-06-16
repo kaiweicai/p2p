@@ -1,0 +1,109 @@
+<#import "/WEB-INF/htm/common/tag.htm" as tag>
+<div class="input_box" style="width:800px">
+	<div class="box_title">信息</div>
+	<div class="box_content">
+		<table class="tb_input" >
+			<tbody>
+				<tr>
+					<th >项目ID</th>
+					<td><#if project.id??>${project.id?c}</#if></td>
+				</tr>
+				<tr>
+					<th >项目标题</th>
+					<td><#if project.title??>${project.title!}</#if></td>
+				</tr>
+				<tr>
+					<th ></th>
+					<td><#if project.province??>${project.province!}</#if></td>
+				</tr>
+				<tr>
+					<th ></th>
+					<td><#if project.city??>${project.city!}</#if></td>
+				</tr>
+				<tr>
+					<th ></th>
+					<td><#if project.couty??>${project.couty!}</#if></td>
+				</tr>
+				<tr>
+					<th >融资主体 1.企业,2.政府,3.企业</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >参考industryMap</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >去年营业额,省略小数(万元)</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >融资用途</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >融资用途</th>
+					<td><#if project.finaceUse??>${project.finaceUse!}</#if></td>
+				</tr>
+				<tr>
+					<th >融资金额最小值</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >融资金额最大值</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th ></th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >意向资金</th>
+					<td><#if project.intendFund??>${project.intendFund?c}</#if></td>
+				</tr>
+				<tr>
+					<th >债权融资</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >股权融资</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >整体转让</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >其他融资</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th >可提供资料</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th ></th>
+					<td><#if project.description??>${project.description!}</#if></td>
+				</tr>
+				<tr>
+					<th >项目优势</th>
+					<td><#if project.advantage??>${project.advantage!}</#if></td>
+				</tr>
+				<tr>
+					<th >其它备注</th>
+					<td><#if project.memo??>${project.memo!}</#if></td>
+				</tr>
+				<tr>
+					<th ></th>
+					<td><#if project.tag??>${project.tag!}</#if></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<div class="box_foot">
+		<div class="box_foot_buttons">
+			<a class="bt_blue" href="javascript:void(0)" onclick="$.colorbox.close()">关闭</a>	
+		</div>
+	</div>
+</div>
+

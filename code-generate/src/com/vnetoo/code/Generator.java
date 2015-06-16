@@ -73,7 +73,7 @@ public class Generator {
 	private String parseBOType(String type){
 		if(type.equals("CHAR")||type.equals("VARCHAR")||type.equals("VARCHAR2"))
 			return "java.lang.String";
-		else if(type.equals("NUMBER") || type.equals("BIGINT") || type.equals("INT"))
+		else if(type.equals("NUMBER") || type.equals("BIGINT") || type.equals("INT")||(type.equals("SMALLINT"))||(type.equals("BIT")))
 			return "java.lang.Integer";
 		else if(type.equals("DATE") || type.startsWith("TIMESTAMP") || type.equals("DATETIME"))
 			return "java.util.Date";
@@ -703,7 +703,7 @@ public class Generator {
 					tr_list+=
 						"\t\t<tr>\n"+
 							"\t\t\t<th>"+bean.comment+"：</th>\n"+
-							"\t\t\t<td>&nbsp;<input type=\"text\" id=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" name=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\"/></td>\n"+
+							"\t\t\t<td>&nbsp;<input type=\"text\" id=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" name=\""+propertyFrom(bean.name)+"\"/></td>\n"+
 						"\t\t</tr>\n";
 					map_list+=
 						"\tmap.put(\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\",\"'\"+document.getElementById(\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\").value.trim()+\"'\");\n";
@@ -713,7 +713,7 @@ public class Generator {
 						"\t\t<tr>\n"+
 							"\t\t\t<th>"+bean.comment+"：</th>\n"+
 							"\t\t\t<td>&nbsp;\n"+
-								"\t\t\t\t<select id=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" name=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\">\n" +
+								"\t\t\t\t<select id=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" name=\""+propertyFrom(bean.name)+"\">\n" +
 								"\t\t\t\t<option value=\"0\" selected>--------请选择--------</option>\n" +
 								"\t\t\t\t</select>\n" +
 							"\t\t\t</td>\n"+
@@ -725,7 +725,7 @@ public class Generator {
 					tr_list+=
 							"\t\t<tr>\n"+
 								"\t\t\t<th>"+bean.comment+"：</th>\n"+
-								"\t\t\t<td>&nbsp;<input type=\"text\" id=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" name=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\""
+								"\t\t\t<td>&nbsp;<input type=\"text\" id=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" name=\""+propertyFrom(bean.name)+"\""
 								+ " onfocus=\"WdatePicker({readOnly:true,startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})\"/></td>\n"+
 							"\t\t</tr>\n";
 						map_list+=
@@ -854,14 +854,14 @@ public class Generator {
 						}
 						tr_list+="</th>\n\t\t\t\t\t<td>";
 				if(type.equals("java.lang.String")){
-					tr_list+="<input type=\"text\" name=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" value=\"<#if "+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"??>${"+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"!}</#if>\">";
+					tr_list+="<input type=\"text\" name=\""+propertyFrom(bean.name)+"\" value=\"${"+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"}\">";
 				}
 				else if(type.equals("java.lang.Integer")){
-					tr_list+="<input type=\"text\" name=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" value=\"<#if "+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"??>${"+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"?c}</#if>\">";					
+					tr_list+="<input type=\"text\" name=\""+propertyFrom(bean.name)+"\" value=\"${"+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"}\">";					
 				}
 				else if(type.equals("java.util.Date")){
 					tr_list+=
-						"<input type=\"text\" name=\""+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"\" value=\"<#if "+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"??>${("+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"?string('yyyy-MM-dd HH:mm:ss'))!}</#if>\""+
+						"<input type=\"text\" name=\""+propertyFrom(bean.name)+"\" value=\"${("+LowerFirst(baseName)+"."+propertyFrom(bean.name)+"}\""+
 						"onfocus=\"WdatePicker({readOnly:true,startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})\">";											
 				}
 				else{
@@ -879,10 +879,10 @@ public class Generator {
 		
 		createAction(updateProperty);
 		
-		String fileName = jspPath + File.separator + LowerFirst(baseName) + File.separator +"edit.htm";
+		String fileName = jspPath + File.separator + LowerFirst(baseName) + File.separator +LowerFirst(baseName)+"Edit.jsp";
 		System.out.println("creating createJspEdit...");
 		if (!createFile(fileName)) {
-			System.out.println(">>>createJspEdit-" + baseName+ "edit.htm is exist!");
+			System.out.println(">>>createJspEdit-" + LowerFirst(baseName) + baseName+ "Edit.dhtml is exist!");
 			return;
 		}
 		String data = readModual("JspEdit.txt");
@@ -1009,10 +1009,10 @@ public class Generator {
 		if(Boolean.parseBoolean(args[25])){
 			gc.initDlg();
 			System.out.println("generate JSP");
-			gc.createJspSearch();
-			gc.createJspList();
+//			gc.createJspSearch();
+//			gc.createJspList();
 			gc.createJspEdit();
-			gc.createJspShow();
+//			gc.createJspShow();
 			gc.closeDlg();
 		}
 		System.exit(0);
