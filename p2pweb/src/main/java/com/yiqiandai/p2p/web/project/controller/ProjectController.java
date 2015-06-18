@@ -68,7 +68,7 @@ public class ProjectController extends BaseController<Project>{
 	 * 保存	
 	 */
 	@Token(remove = true)
-	@RequestMapping(value="/save.dhtml",method={POST})
+	@RequestMapping(value="/save.dhtml",method={GET,POST})
 	public ModelAndView save(Project porject) {
 		ModelAndView modelAndView = new ModelAndView();
 		Integer id = projectService.saveOrUpdate(porject);

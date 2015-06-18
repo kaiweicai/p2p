@@ -30,19 +30,19 @@ public abstract class AbstractProject implements java.io.Serializable{
 	/**
 	 * @alias 融资主体 1.企业,2.政府,3.企业
 	 */
-	protected java.lang.Object subject;
+	protected Integer subject;
 	/**
 	 * @alias 参考industryMap
 	 */
-	protected java.lang.Object industry;
+	protected Integer industry;
 	/**
 	 * @alias 去年营业额,省略小数(万元)
 	 */
-	protected java.lang.Object turnoverLastYear;
+	protected Integer turnoverLastYear;
 	/**
 	 * @alias 融资用途
 	 */
-	protected java.lang.Object netValue;
+	protected Integer netValue;
 	/**
 	 * @alias 融资用途
 	 */
@@ -50,15 +50,15 @@ public abstract class AbstractProject implements java.io.Serializable{
 	/**
 	 * @alias 融资金额最小值
 	 */
-	protected java.lang.Object finaceAmountMin;
+	protected Integer finaceAmountMin;
 	/**
 	 * @alias 融资金额最大值
 	 */
-	protected java.lang.Object finaceAmountMax;
+	protected Integer finaceAmountMax;
 	/**
 	 * @alias 
 	 */
-	protected java.lang.Object investAmount;
+	protected Integer investAmount;
 	/**
 	 * @alias 意向资金
 	 */
@@ -66,23 +66,23 @@ public abstract class AbstractProject implements java.io.Serializable{
 	/**
 	 * @alias 债权融资
 	 */
-	protected java.lang.Object debtFinacialing;
+	protected Integer debtFinacialing;
 	/**
 	 * @alias 股权融资
 	 */
-	protected java.lang.Object equityFinacialing;
+	protected Integer equityFinacialing;
 	/**
 	 * @alias 整体转让
 	 */
-	protected java.lang.Object overallTransfer;
+	protected Integer overallTransfer;
 	/**
 	 * @alias 其他融资
 	 */
-	protected java.lang.Object otherFinacialing;
+	protected Integer otherFinacialing;
 	/**
 	 * @alias 可提供资料
 	 */
-	protected java.lang.Object material;
+	protected Integer material;
 	/**
 	 * @alias 
 	 */
@@ -99,143 +99,143 @@ public abstract class AbstractProject implements java.io.Serializable{
 	 * @alias 
 	 */
 	protected java.lang.String tag;
+	public java.lang.Integer getId() {
+		return id;
+	}
+	public void setId(java.lang.Integer id) {
+		this.id = id;
+	}
+	public java.lang.String getTitle() {
+		return title;
+	}
+	public void setTitle(java.lang.String title) {
+		this.title = title;
+	}
+	public java.lang.String getProvince() {
+		return province;
+	}
+	public void setProvince(java.lang.String province) {
+		this.province = province;
+	}
+	public java.lang.String getCity() {
+		return city;
+	}
+	public void setCity(java.lang.String city) {
+		this.city = city;
+	}
+	public java.lang.String getCouty() {
+		return couty;
+	}
+	public void setCouty(java.lang.String couty) {
+		this.couty = couty;
+	}
+	public Integer getSubject() {
+		return subject;
+	}
+	public void setSubject(Integer subject) {
+		this.subject = subject;
+	}
+	public Integer getIndustry() {
+		return industry;
+	}
+	public void setIndustry(Integer industry) {
+		this.industry = industry;
+	}
+	public Integer getTurnoverLastYear() {
+		return turnoverLastYear;
+	}
+	public void setTurnoverLastYear(Integer turnoverLastYear) {
+		this.turnoverLastYear = turnoverLastYear;
+	}
+	public Integer getNetValue() {
+		return netValue;
+	}
+	public void setNetValue(Integer netValue) {
+		this.netValue = netValue;
+	}
+	public java.lang.String getFinaceUse() {
+		return finaceUse;
+	}
+	public void setFinaceUse(java.lang.String finaceUse) {
+		this.finaceUse = finaceUse;
+	}
+	public Integer getFinaceAmountMin() {
+		return finaceAmountMin;
+	}
+	public void setFinaceAmountMin(Integer finaceAmountMin) {
+		this.finaceAmountMin = finaceAmountMin;
+	}
+	public Integer getFinaceAmountMax() {
+		return finaceAmountMax;
+	}
+	public void setFinaceAmountMax(Integer finaceAmountMax) {
+		this.finaceAmountMax = finaceAmountMax;
+	}
+	public Integer getInvestAmount() {
+		return investAmount;
+	}
+	public void setInvestAmount(Integer investAmount) {
+		this.investAmount = investAmount;
+	}
+	public java.lang.Integer getIntendFund() {
+		return intendFund;
+	}
+	public void setIntendFund(java.lang.Integer intendFund) {
+		this.intendFund = intendFund;
+	}
+	public Integer getDebtFinacialing() {
+		return debtFinacialing;
+	}
+	public void setDebtFinacialing(Integer debtFinacialing) {
+		this.debtFinacialing = debtFinacialing;
+	}
+	public Integer getEquityFinacialing() {
+		return equityFinacialing;
+	}
+	public void setEquityFinacialing(Integer equityFinacialing) {
+		this.equityFinacialing = equityFinacialing;
+	}
+	public Integer getOverallTransfer() {
+		return overallTransfer;
+	}
+	public void setOverallTransfer(Integer overallTransfer) {
+		this.overallTransfer = overallTransfer;
+	}
+	public Integer getOtherFinacialing() {
+		return otherFinacialing;
+	}
+	public void setOtherFinacialing(Integer otherFinacialing) {
+		this.otherFinacialing = otherFinacialing;
+	}
+	public Integer getMaterial() {
+		return material;
+	}
+	public void setMaterial(Integer material) {
+		this.material = material;
+	}
+	public java.lang.String getDescription() {
+		return description;
+	}
+	public void setDescription(java.lang.String description) {
+		this.description = description;
+	}
+	public java.lang.String getAdvantage() {
+		return advantage;
+	}
+	public void setAdvantage(java.lang.String advantage) {
+		this.advantage = advantage;
+	}
+	public java.lang.String getMemo() {
+		return memo;
+	}
+	public void setMemo(java.lang.String memo) {
+		this.memo = memo;
+	}
+	public java.lang.String getTag() {
+		return tag;
+	}
+	public void setTag(java.lang.String tag) {
+		this.tag = tag;
+	}
 
-	public void setId(java.lang.Integer id){
-		 this.id=id;
-	}
-	public java.lang.Integer getId(){
-		 return this.id;
-	}
-	public void setTitle(java.lang.String title){
-		 this.title=title;
-	}
-	public java.lang.String getTitle(){
-		 return this.title;
-	}
-	public void setProvince(java.lang.String province){
-		 this.province=province;
-	}
-	public java.lang.String getProvince(){
-		 return this.province;
-	}
-	public void setCity(java.lang.String city){
-		 this.city=city;
-	}
-	public java.lang.String getCity(){
-		 return this.city;
-	}
-	public void setCouty(java.lang.String couty){
-		 this.couty=couty;
-	}
-	public java.lang.String getCouty(){
-		 return this.couty;
-	}
-	public void setSubject(java.lang.Object subject){
-		 this.subject=subject;
-	}
-	public java.lang.Object getSubject(){
-		 return this.subject;
-	}
-	public void setIndustry(java.lang.Object industry){
-		 this.industry=industry;
-	}
-	public java.lang.Object getIndustry(){
-		 return this.industry;
-	}
-	public void setTurnoverLastYear(java.lang.Object turnoverLastYear){
-		 this.turnoverLastYear=turnoverLastYear;
-	}
-	public java.lang.Object getTurnoverLastYear(){
-		 return this.turnoverLastYear;
-	}
-	public void setNetValue(java.lang.Object netValue){
-		 this.netValue=netValue;
-	}
-	public java.lang.Object getNetValue(){
-		 return this.netValue;
-	}
-	public void setFinaceUse(java.lang.String finaceUse){
-		 this.finaceUse=finaceUse;
-	}
-	public java.lang.String getFinaceUse(){
-		 return this.finaceUse;
-	}
-	public void setFinaceAmountMin(java.lang.Object finaceAmountMin){
-		 this.finaceAmountMin=finaceAmountMin;
-	}
-	public java.lang.Object getFinaceAmountMin(){
-		 return this.finaceAmountMin;
-	}
-	public void setFinaceAmountMax(java.lang.Object finaceAmountMax){
-		 this.finaceAmountMax=finaceAmountMax;
-	}
-	public java.lang.Object getFinaceAmountMax(){
-		 return this.finaceAmountMax;
-	}
-	public void setInvestAmount(java.lang.Object investAmount){
-		 this.investAmount=investAmount;
-	}
-	public java.lang.Object getInvestAmount(){
-		 return this.investAmount;
-	}
-	public void setIntendFund(java.lang.Integer intendFund){
-		 this.intendFund=intendFund;
-	}
-	public java.lang.Integer getIntendFund(){
-		 return this.intendFund;
-	}
-	public void setDebtFinacialing(java.lang.Object debtFinacialing){
-		 this.debtFinacialing=debtFinacialing;
-	}
-	public java.lang.Object getDebtFinacialing(){
-		 return this.debtFinacialing;
-	}
-	public void setEquityFinacialing(java.lang.Object equityFinacialing){
-		 this.equityFinacialing=equityFinacialing;
-	}
-	public java.lang.Object getEquityFinacialing(){
-		 return this.equityFinacialing;
-	}
-	public void setOverallTransfer(java.lang.Object overallTransfer){
-		 this.overallTransfer=overallTransfer;
-	}
-	public java.lang.Object getOverallTransfer(){
-		 return this.overallTransfer;
-	}
-	public void setOtherFinacialing(java.lang.Object otherFinacialing){
-		 this.otherFinacialing=otherFinacialing;
-	}
-	public java.lang.Object getOtherFinacialing(){
-		 return this.otherFinacialing;
-	}
-	public void setMaterial(java.lang.Object material){
-		 this.material=material;
-	}
-	public java.lang.Object getMaterial(){
-		 return this.material;
-	}
-	public void setDescription(java.lang.String description){
-		 this.description=description;
-	}
-	public java.lang.String getDescription(){
-		 return this.description;
-	}
-	public void setAdvantage(java.lang.String advantage){
-		 this.advantage=advantage;
-	}
-	public java.lang.String getAdvantage(){
-		 return this.advantage;
-	}
-	public void setMemo(java.lang.String memo){
-		 this.memo=memo;
-	}
-	public java.lang.String getMemo(){
-		 return this.memo;
-	}
-	public void setTag(java.lang.String tag){
-		 this.tag=tag;
-	}
-	public java.lang.String getTag(){
-		 return this.tag;
-	}
 }

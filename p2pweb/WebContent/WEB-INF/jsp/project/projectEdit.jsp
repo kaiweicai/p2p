@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="EN">
 <head>
 	<%@include file="/WEB-INF/jsp/inc/layout.jsp"%>
 	<%@include file="/WEB-INF/jsp/inc/meta.jsp"%>
-    <meta charset="UTF-8">
+	
     <title>专业的融资服务交易平台－商道界</title>
 	<meta name="Keywords" content="${Keywords} " />
 	<meta name="Description" content="${Description}" />
@@ -12,7 +12,7 @@
     <meta name="renderer" content="webkit">
 </head>
 <div class="container">
-<form:form method="post" action="${webroot}/project/save.dhtml">
+<form method="post" action="${webroot}/project/save.dhtml" >
 <div class="input_box">
 	<div class="box_title">
 		<c:if test="${project.id}!=null">修改</c:if>
@@ -23,17 +23,19 @@
 		<input type="hidden" name="${project.id}" id="${project.id}" value="${project.id}">
 		<table class="tb_input" >
 			<tbody>
-								<tr>
+				<tr>
 					<th >项目ID<strong class="red">*</strong></th>
 					<td><input type="text" name="id" value="${project.id}"></td>
 				</tr>
 				<tr>
 					<th >项目标题<strong class="red">*</strong></th>
-					<td><input type="text" name="title" value="${project.title}"></td>
+					<td>
+						<input type="text" name="title" value="${project.title}">
+					</td>
 				</tr>
 				<tr>
 					<th ><strong class="red">*</strong></th>
-					<td><input type="text" name="province" value="${project.province}"></td>
+					<td><input type="text" name="province" value="重庆"></td>
 				</tr>
 				<tr>
 					<th ><strong class="red">*</strong></th>
@@ -126,7 +128,7 @@
 		</div>
 	</div>
 </div>
-</form:form>
+</form>
 </div>
 
 <script type="text/javascript">

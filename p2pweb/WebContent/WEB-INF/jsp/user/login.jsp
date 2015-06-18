@@ -11,7 +11,7 @@
 <body>
 	<%@include file="/WEB-INF/jsp/user/loginHeader.jsp"%>
 	<div class="container">
-		<form:form commandName="usermodel"  action="/user/login.dhtml" method="post" class="form-signin">
+		<form:form commandName="usermodel"  action="${webroot}/user/login.dhtml" method="post" class="form-signin">
 			<input type="hidden" id="from"/>
 	    	<!-- <div class="login_bg">
 	    		<img src="/assets/images/login/loginbg.jpg" width="527" height="440" />
